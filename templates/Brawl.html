@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css_brawl.css') }}" />
+{% endblock %}
+{% block body %}
+<div class="header">
+        <br>
+		<img src="/static/CSS/Brawl.png" alt="" usemap="#cssmap">
+        <img src="/static/CSS/SSS_Brawl.png" alt="" usemap="#SSSMap1">
+        <br>
+        <br>
+        <img src="/static/CSS/SSS_Brawl2.png" alt="" usemap="#SSSMap2">
+<map name="cssmap">
+
+<area shape="rect" coords="838,362,971,452" href="/search?query=game%3ABrawl+tag%3ASonic">
+<area shape="rect" coords="702,362,835,452" href="/search?query=game%3ABrawl+tag%3ASnake">
+<area shape="rect" coords="564,362,697,452" href="/search?query=game%3ABrawl+tag%3AMr_game_and_watch">
+<area shape="rect" coords="428,362,561,452" href="/search?query=game%3ABrawl+tag%3ARob">
+<area shape="rect" coords="293,362,426,452" href="/search?query=game%3ABrawl+tag%3AOlimar">
+<area shape="rect" coords="1105,272,1238,362" href="/search?query=game%3ABrawl+tag%3AIke">
+<area shape="rect" coords="968,272,1101,362" href="/search?query=game%3ABrawl+tag%3AMarth">
+<area shape="rect" coords="835,272,968,362" href="/search?query=game%3ABrawl+tag%3ACharizard">
+<area shape="rect" coords="700,271,833,361" href="/search?query=game%3ABrawl+tag%3A">
+<area shape="rect" coords="563,183,696,273" href="/c/">
+<area shape="rect" coords="562,271,695,361" href="/search?query=game%3ABrawl+tag%3ASquirtle">
+<area shape="rect" coords="427,271,560,361" href="/search?query=game%3ABrawl+tag%3APokemon_trainer">
+<area shape="rect" coords="292,271,425,361" href="/search?query=game%3ABrawl+tag%3ALucario">
+<area shape="rect" coords="156,272,289,362" href="/search?query=game%3ABrawl+tag%3AJigglypuff">
+<area shape="rect" coords="23,272,156,362" href="/search?query=game%3ABrawl+tag%3APikachu">
+<area shape="rect" coords="1105,183,1238,273" href="/search?query=game%3ABrawl+tag%3ALucas">
+<area shape="rect" coords="970,182,1103,272" href="/search?query=game%3ABrawl+tag%3ANess">
+<area shape="rect" coords="835,182,968,272" href="/search?query=game%3ABrawl+tag%3AZero_suit_samus">
+<area shape="rect" coords="699,182,832,272" href="/search?query=game%3ABrawl+tag%3ASamus">
+<area shape="rect" coords="428,182,561,272" href="/search?query=game%3ABrawl+tag%3APit">
+<area shape="rect" coords="293,181,426,271" href="/search?query=game%3ABrawl+tag%3ADedede">
+<area shape="rect" coords="157,182,290,272" href="/search?query=game%3ABrawl+tag%3AMeta_knight">
+<area shape="rect" coords="20,181,153,271" href="/search?query=game%3ABrawl+tag%3AKirby">
+<area shape="rect" coords="1106,93,1239,183" href="/search?query=game%3ABrawl+tag%3AGanondorf">
+<area shape="rect" coords="971,91,1104,181" href="/search?query=game%3ABrawl+tag%3ASheik">
+<area shape="rect" coords="831,92,964,182" href="/search?query=game%3ABrawl+tag%3AZelda">
+<area shape="rect" coords="697,93,830,183" href="/search?query=game%3ABrawl+tag%3AToon_link">
+<area shape="rect" coords="564,93,697,183" href="/search?query=game%3ABrawl+tag%3ALink">
+<area shape="rect" coords="429,92,562,182" href="/search?query=game%3ABrawl+tag%3AIce_climbers">
+<area shape="rect" coords="293,92,426,182" href="/search?query=game%3ABrawl+tag%3AWolf">
+<area shape="rect" coords="158,92,291,182" href="/search?query=game%3ABrawl+tag%3AFalco">
+<area shape="rect" coords="23,92,156,182" href="/search?query=game%3ABrawl+tag%3AFox">
+<area shape="rect" coords="1106,1,1239,91" href="/search?query=game%3ABrawl+tag%3ACaptain_falcon">
+<area shape="rect" coords="969,1,1102,91" href="/search?query=game%3ABrawl+tag%3ADiddy_Kong">
+<area shape="rect" coords="835,0,968,90" href="/search?query=game%3ABrawl+tag%3ADonkey_kong">
+<area shape="rect" coords="697,1,830,91" href="/search?query=game%3ABrawl+tag%3AWario">
+<area shape="rect" coords="563,2,696,92" href="/search?query=game%3ABrawl+tag%3AYoshi">
+<area shape="rect" coords="429,1,562,91" href="/search?query=game%3ABrawl+tag%3ABowser">
+<area coords="293,0,426,90" href="/search?query=game%3ABrawl+tag%3APeach" shpe="rect">
+<area shape="rect" coords="158,1,291,91" href="/search?query=game%3ABrawl+tag%3ALuigi">
+<area shape="rect" coords="22,1,155,91" href="/search?query=game%3ABrawl+tag%3AMario">
+</map>
+<map name="SSSMap1">
+<area shape="rect" coords="169,625,320,746" href="/search?query=game%3ABrawl+tag%3APictochat">
+<area shape="rect" coords="321,625,472,746" href="/search?query=game%3ABrawl+tag%3AHanenbow">
+<area shape="rect" coords="471,626,622,747" href="/search?query=game%3ABrawl+tag%3AShadow_moses_island">
+<area shape="rect" coords="621,624,772,745" href="/search?query=game%3ABrawl+tag%3AGreen_hill_zone">
+<area shape="rect" coords="607,502,758,623" href="/search?query=game%3ABrawl+tag%3AMario_bros">
+<area shape="rect" coords="463,502,614,623" href="/search?query=game%3ABrawl+tag%3A75m">
+<area shape="rect" coords="313,504,464,625" href="/search?query=game%3ABrawl+tag%3ASkyworld">
+<area shape="rect" coords="163,503,314,624" href="/search?query=game%3ABrawl+tag%3ASummit">
+<area shape="rect" coords="11,503,162,624" href="/search?query=game%3ABrawl+tag%3ANew_pork_city">
+<area shape="rect" coords="751,504,902,625" href="/search?query=game%3ABrawl+tag%3AFlat_zone_2">
+<area shape="rect" coords="670,375,821,496" href="/search?query=game%3ABrawl+tag%3ASmashVille">
+<area shape="rect" coords="526,375,677,496" href="/search?query=game%3ABrawl+tag%3ADistant_planet">
+<area shape="rect" coords="376,377,527,498" href="/search?query=game%3ABrawl+tag%3AWarioware">
+<area shape="rect" coords="226,376,377,497" href="/search?query=game%3ABrawl+tag%3ACastle_siege">
+<area shape="rect" coords="74,376,225,497" href="/search?query=game%3ABrawl+tag%3AAero_town_port_dive">
+<area shape="rect" coords="103,253,254,374" href="/search?query=game%3ABrawl+tag%3AYoshis_island">
+<area shape="rect" coords="255,253,406,374" href="/search?query=game%3ABrawl+tag%3AHalberd">
+<area shape="rect" coords="405,254,556,375" href="/search?query=game%3ABrawl+tag%3ALylat_cruise">
+<area shape="rect" coords="555,252,706,373" href="/search?query=game%3ABrawl+tag%3APokemon_stadium_2">
+<area shape="rect" coords="699,252,850,373" href="/search?query=game%3ABrawl+tag%3ASpear_pillar">
+<area shape="rect" coords="755,128,906,249" href="/search?query=game%3ABrawl+tag%3AFrigate_orpheon">
+<area shape="rect" coords="15,127,166,248" href="/search?query=game%3ABrawl+tag%3AMario_circuit">
+<area shape="rect" coords="167,127,318,248" href="/search?query=game%3ABrawl+tag%3ARumble_falls">
+<area shape="rect" coords="317,128,468,249" href="/search?query=game%3ABrawl+tag%3ABridge_of_eldin">
+<area shape="rect" coords="467,126,618,247" href="/search?query=game%3ABrawl+tag%3APirate_ship">
+<area shape="rect" coords="611,126,762,247" href="/search?query=game%3ABrawl+tag%3ANorfair">
+<area shape="rect" coords="679,0,830,121" href="/search?query=game%3ABrawl+tag%3A">
+<area shape="rect" coords="535,0,686,121" href="/search?query=game%3ABrawl+tag%3ALuigis_mansion">
+<area shape="rect" coords="385,2,536,123" href="/search?query=game%3ABrawl+tag%3ADelfino_plaza">
+<area shape="rect" coords="235,1,386,122" href="/search?query=game%3ABrawl+tag%3AFinal_destination">
+<area shape="rect" coords="83,1,234,122" href="/search?query=game%3ABrawl+tag%3ABattlefield">
+</map>
+<map name="SSSMap2">
+<area shape="rect" coords="125,407,318,566" href="/search?query=game%3ABrawl+tag%3ABig_blue">
+<area shape="rect" coords="365,410,558,569" href="/search?query=game%3ABrawl+tag%3ABrinstar">
+<area shape="rect" coords="609,412,802,571" href="/search?query=game%3ABrawl+tag%3APokemon_stadium">
+<area shape="rect" coords="712,207,905,366" href="/search?query=game%3ABrawl+tag%3AGreen_greens">
+<area shape="rect" coords="476,207,669,366" href="/search?query=game%3ABrawl+tag%3ARainbow_cruise">
+<area shape="rect" coords="246,209,439,368" href="/search?query=game%3ABrawl+tag%3ACorneria">
+<area shape="rect" coords="14,208,207,367" href="/search?query=game%3ABrawl+tag%3AOnett">
+<area shape="rect" coords="640,2,833,161" href="/search?query=game%3ABrawl+tag%3AJungle_japes">
+<area shape="rect" coords="396,0,589,159" href="/search?query=game%3ABrawl+tag%3AYoshis_island">
+<area shape="rect" coords="156,-3,349,156" href="/search?query=game%3ABrawl+tag%3ATemple">
+</map>
+
+
+</div>
+
+{% block javascript %}
+    <script type="text/javascript">
+        {% include "konami.js" %}
+        {% include "index.js" %}
+    </script>
+    <!-- The contents of myscript.js will be loaded inside the script tag -->
+{% endblock %}
+{% endblock %}

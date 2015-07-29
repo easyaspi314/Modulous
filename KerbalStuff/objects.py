@@ -100,6 +100,7 @@ class Mod(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship('User', backref=backref('mod', order_by=id))
     shared_authors = relationship('SharedAuthor')
+    other_authors = Column(Unicode(1000))
     name = Column(String(100), index = True)
     description = Column(Unicode(100000))
     short_description = Column(Unicode(1000))
@@ -113,6 +114,8 @@ class Mod(Base):
     updated = Column(DateTime)
     background = Column(String(512))
     bgOffsetX = Column(Integer)
+    tags = Column(Unicode(1000))
+    tags_array = []
     bgOffsetY = Column(Integer)
     medias = relationship('Media')
     default_version_id = Column(Integer)
@@ -125,7 +128,7 @@ class Mod(Base):
     download_count = Column(Integer, nullable=False, server_default=text('0'))
     followers = relationship('User', viewonly=True, secondary=mod_followers, backref='mod.id')
     ckan = Column(Boolean)
-
+    modmm = Column(Boolean)
     def default_version(self):
         versions = [v for v in self.versions if v.id == self.default_version_id]
         if len(versions) == 0:
@@ -192,7 +195,14 @@ class SharedAuthor(Base):
 
     def __repr__(self):
         return '<SharedAuthor %r>' % self.user_id
-
+class OtherAuthor(Base):
+    __tablename__ = 'otherauthor'
+    id = Column(Integer, primary_key = True)
+    name = Column(String(100), index = True)
+    def __init__(self):
+        return
+    def __repr__(self):
+        return '<OtherAuthor %r>' % self.name
 class DownloadEvent(Base):
     __tablename__ = 'downloadevent'
     id = Column(Integer, primary_key = True)
@@ -263,7 +273,6 @@ class ModVersion(Base):
 
     def __repr__(self):
         return '<Mod Version %r>' % self.id
-
 class Media(Base):
     __tablename__ = 'media'
     id = Column(Integer, primary_key = True)

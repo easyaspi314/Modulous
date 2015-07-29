@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}" />
+{% endblock %}
+{% block body %}
+<div class="error-banner" style="background-image: url('/static/donating.jpg')">
+    <div class="container">
+        <h3>Donating</h3>
+        <p>Keeping up a website of this kind is not cheap, you need a lot of storage and some processing power, I'm a 15 years old student from spain and I can't afford a bigger server myself, and don't want this website filled with ads, that's why if you want to keep the page up and help me get a better server you can do so here.</p>
+        <p>
+            <a href="https://www.patreon.com/EIREXE" class="btn btn-primary">Donate</a>
+        </p>
+    </div>
+</div>
+<p class="pull-right">Image credit: <a href="http://www.reddit.com/user/eirexe">/u/eirexe</a></p>
+{% endblock %}

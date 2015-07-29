@@ -12,18 +12,6 @@ import math
 anonymous = Blueprint('anonymous', __name__, template_folder='../../templates/anonymous')
 r = praw.Reddit(user_agent="Kerbal Stuff")
 
-@anonymous.route("/anniversary")
-def anniversary():
-    user_count = User.query.count()
-    mod_count = Mod.query.count()
-    download_count = 0
-    top = search_mods("", 1, 6)[0]
-    oldest = Mod.query.filter(Mod.published).order_by(Mod.created).limit(6)[:6]
-    for m in Mod.query.all():
-        download_count += m.download_count
-    return render_template("anniversary.html", users=user_count, \
-            mods=mod_count, downloads=download_count, top=top, oldest=oldest)
-
 @anonymous.route("/")
 def index():
     featured = Featured.query.order_by(desc(Featured.created)).limit(6)[:6]
@@ -155,7 +143,21 @@ def markdown_info():
 @anonymous.route("/privacy")
 def privacy():
     return render_template("privacy.html")
-
+@anonymous.route("/donating")
+def donating():
+    return render_template("donating.html")
+@anonymous.route("/browse/ProjectM")
+def browse_pm():
+    return render_template("CSS/ProjectM.html")
+@anonymous.route("/browse/Brawl")
+def browse_brawl():
+    return render_template("CSS/Brawl.html")
+@anonymous.route("/browse/Melee")
+def browse_melee():
+    return render_template("CSS/Melee.html")
+@anonymous.route("/mod_manager")    
+def mod_manager():
+    return render_template("modmm.html")
 @anonymous.route("/search")
 def search():
     query = request.args.get('query')

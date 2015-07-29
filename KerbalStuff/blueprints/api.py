@@ -24,7 +24,7 @@ By the way, you have a lot of flexibility here. You can embed YouTube videos or 
 
 You can check out the Kerbal Stuff [markdown documentation](/markdown) for tips.
 
-Thanks for hosting your mod on Kerbal Stuff!"""
+Thanks for hosting your mod on Modulous!"""
 
 #some helper functions to keep things consistant
 def user_info(user):
@@ -42,6 +42,8 @@ def mod_info(mod):
         "name": mod.name,
         "id": mod.id,
         "short_description": mod.short_description,
+        "tags": mod.tags,
+        "other_authors": mod.other_authors,
         "downloads": mod.download_count,
         "followers": mod.follower_count,
         "author": mod.user.username,
@@ -111,7 +113,18 @@ def search_mod():
             a['versions'].append(version_info(m, v))
         results.append(a)
     return results
-
+@api.route("/api/modmm/updates")
+@json_output
+def updates():
+    version = 1.7
+    version_path = "http://modulous.net/static/update.zip"
+    results = list()
+    results.append(version)
+    results.append(version_path)
+    return {
+        "version": version,
+        "version_path": version_path
+    }
 @api.route("/api/search/user")
 @json_output
 def search_user():
@@ -171,7 +184,47 @@ def browse():
         "page": page,
         "result": results
     }
-
+@api.route("/api/browse_manager")
+@json_output
+def browse_manager():
+    # set count per page
+    count = request.args.get('count')
+    count = 30 if not count or not count.isdigit() or int(count) > 500 else int(count)
+    mods = Mod.query.filter(Mod.published).filter(Mod.modmm)
+    # detect total pages
+    total_pages = math.ceil(mods.count() / count)
+    total_pages = 1 if total_pages > 0 else total_pages
+    # order by field
+    orderby = request.args.get('orderby')
+    if orderby == "name":
+        orderby = Mod.name
+    elif orderby == "updated":
+        orderby = Mod.updated
+    else:
+        orderby = Mod.created
+    # order direction
+    order = request.args.get('order')
+    if order == "desc":
+        mods.order_by(desc(orderby))
+    else:
+        mods.order_by(asc(orderby))
+    # current page
+    page = request.args.get('page')
+    page = 1 if not page or not page.isdigit() or int(page) > total_pages else int(page)
+    # generate result
+    results = list()
+    for m in mods:
+        a = mod_info(m)
+        a['versions'] = list()
+        for v in m.versions:
+            a['versions'].append(version_info(m, v))
+        results.append(a)
+    return {
+        "count": count,
+        "pages": total_pages,
+        "page": page,
+        "result": results
+    }
 @api.route("/api/browse/new")
 @json_output
 def browse_new():
@@ -274,6 +327,10 @@ def mod(modid):
         info["versions"].append(version_info(mod, v))
     info["description"] = mod.description
     info["description_html"] = str(current_app.jinja_env.filters['markdown'](mod.description))
+    info["tags"] = mod.tags
+    info["other_authors"] = mod.other_authors
+    info["tags_array"] = mod.tags_array
+    info["modmm"] = mod.modmm
     return info
 
 @api.route("/api/mod/<modid>/<version>")
@@ -411,7 +468,6 @@ def grant_mod(mod_id):
     db.commit()
     send_grant_notice(mod, new_user)
     return { 'error': False }, 200
-
 @api.route('/api/mod/<mod_id>/accept_grant', methods=['POST'])
 @with_session
 @json_output
@@ -478,7 +534,6 @@ def revoke_mod(mod_id):
     mod.shared_authors = [a for a in mod.shared_authors if a.user != current_user]
     db.delete(author)
     return { 'error': False }, 200
-
 @api.route('/api/mod/<int:mid>/set-default/<int:vid>', methods=['POST'])
 @with_session
 @json_output
@@ -520,7 +575,6 @@ def create_list():
     db.add(mod_list)
     db.commit()
     return { 'url': url_for("lists.view_list", list_id=mod_list.id, list_name=mod_list.name) }
-
 @api.route('/api/mod/create', methods=['POST'])
 @json_output
 def create_mod():
@@ -530,10 +584,11 @@ def create_mod():
         return { 'error': True, 'reason': 'Only users with public profiles may create mods.' }, 403
     name = request.form.get('name')
     short_description = request.form.get('short-description')
+    tags = request.form.get('tags')
     version = request.form.get('version')
     ksp_version = request.form.get('ksp-version')
     license = request.form.get('license')
-    ckan = request.form.get('ckan')
+    modmm = request.form.get('modmm');
     zipball = request.files.get('zipball')
     # Validate
     if not name \
@@ -548,16 +603,17 @@ def create_mod():
         or len(short_description) > 1000 \
         or len(license) > 128:
         return { 'error': True, 'reason': 'Fields exceed maximum permissible length.' }, 400
-    if ckan == None:
-        ckan = False
+    if modmm == None:
+        modmm = False
     else:
-        ckan = (ckan.lower() == "true" or ckan.lower() == "yes" or ckan.lower() == "on")
+        modmm = (modmm.lower() == "true" or modmm.lower() == "yes" or modmm.lower() == "on")
     mod = Mod()
     mod.user = current_user
     mod.name = name
     mod.short_description = short_description
+    mod.tags = tags
     mod.description = default_description
-    mod.ckan = ckan
+    mod.modmm = modmm
     mod.license = license
     # Save zipball
     filename = secure_filename(name) + '-' + secure_filename(version) + '.zip'

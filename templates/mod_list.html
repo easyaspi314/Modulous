@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block title %}
-<title>{{ mod_list.name }} on Kerbal Stuff</title>
+<title>{{ mod_list.name }} on Modulous</title>
 {% endblock %}
 {% block styles %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mod.css') }}" />
@@ -56,7 +56,7 @@
             <h3>
                 <a href="{{ url_for("mods.mod", mod_name=mod.name, id=mod.id) }}">{{ mod.name }}</a>
                 {{ mod.default_version().friendly_version }}
-                for KSP {{ mod.default_version().ksp_version }}
+                for Super Smash Bros. {{ mod.default_version().ksp_version }} </
                 <small>from <a href="/profile/{{ mod.user.username }}">{{ mod.user.username }}</a></small>
             </h3>
             <p>{{ mod.short_description }}</p>

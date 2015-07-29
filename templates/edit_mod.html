@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block title %}
-<title>Edit {{ mod.name }} on Kerbal Stuff</title>
+<title>Edit {{ mod.name }} on Modulous</title>
 {% endblock %}
 {% block styles %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mod.css') }}" />
@@ -52,6 +52,8 @@ window.mod_id = {{ mod.id }};
             </div>
         </div>
         <input type="text" class="form-control input-block-level" name="short-description" value="{{ mod.short_description }}" placeholder="Short description..." />
+        <p title="{{ mod.name }}">Tags(Sepearated by spaces and using _ instead of spaces)</p>
+        <input type="text" class="form-control input-block-level" name="tags" value="{{ mod.tags }}" placeholder="Short tags..." />
     </div>
 
     <div class="info-list">
@@ -116,7 +118,7 @@ window.mod_id = {{ mod.id }};
                                 <div class="timeline-label">
                                     <h2 style="margin-top: -20px; padding-bottom: 10px;">
                                         <span class="text-muted">
-                                            Source Code:
+                                            Forum Post:
                                         </span>
                                         <input type="text" class="form-control" name="source-link" value="{%if mod.source_link%}{{ mod.source_link }}{%endif%}" />
                                     </h2>
@@ -129,8 +131,15 @@ window.mod_id = {{ mod.id }};
         </div>
     </div>
     {% if original or user.admin %}
+
     <div class="well info">
+    
         <div class="container">
+
+        		<input type="checkbox" id="modmm" name="modmm" style="margin-top: 8px;" {{ "checked" if mod.modmm else ""}} > Add mod to the <a href="http://modulous.net/mod_manager">Modulous Mod Manager</a> (requires your <a href="http://modmanager.modulous.net/html/172a92a9-3da1-4a1f-8cd5-a2468aa522ee.htm">mod to be prepared</a>)
+                    <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left"
+                        title="This makes it so that users can automate the installation of your mod. Your mod won't be added to the mod manager until you publish it."></span>
+
             <h2>Additional Authors</h2>
             <p>Each of these people has permission to edit your mod listing and publish updates.</p>
             <div class="row">
@@ -156,6 +165,32 @@ window.mod_id = {{ mod.id }};
             </div>
         </div>
     </div>
+    <div class="well info">
+        <div class="container">
+            <h2>Other Authors</h2>
+            <p>Authors that don't have an account here in Modulous go here.</p>
+            <div class="row">
+                <!--{% for author in mod.shared_authors %}
+                <div class="col-md-6">
+                    {{ author.user.username }}
+                    {% if not author.accepted %}
+                    (pending)
+                    {% else %}
+                    <a href="#" data-user="{{ author.user.username }}" class="remove-author"><span class="glyphicon glyphicon-remove"></span></a>
+                    {% endif %}
+                </div>
+                {% endfor %}-->
+                <div class="col-md-6" id="beforeme">
+                    <div class="alert alert-danger hidden" id="other-author-error"></div>
+                    <div class="col-md-9">
+					Make sure you
+                        <input type="text" class="form-control" name="other-authors" value="{{ mod.other_authors }}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
     {% endif %}
 
     <div class="container" style="margin-top: 10px;">

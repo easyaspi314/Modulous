@@ -18,10 +18,8 @@
 <div class="header">
     <div class="vert-text">
         <h3>Create a new mod</h3>
-        <p>Thanks for helping make Kerbal Stuff more awesome!<br/>
-        Double check that your mod meets <a href="#" data-toggle="modal" data-target="#mod-guidelines">our guidelines</a>, please.<br/>
-        <span style="color: #ef0000">Craft files and flag packs are NOT mods and will be removed.</span>
-        </p>
+        <p>Thanks for helping make Modulous more awesome!<br/>
+        Double check that your mod meets <a href="#" data-toggle="modal" data-target="#mod-guidelines">our guidelines</a>, please.</p>
     </div>
 </div>
 
@@ -48,6 +46,10 @@
             <input id="mod-other-license" type="text" class="form-control input-lg hidden"
                 placeholder="What license do you use?" style="margin-top: 10px;" maxLength=128 />
         </div>
+		<div class="form-group">
+			<h2>Tags (Sepearated by spaces and using _ instead of spaces):</h2>
+            <input id="mod-short-tags" class="form-control input-lg" type="text" maxLength=1000 />
+        </div>
         <div class="form-group">
             <h2>Zip File</h2>
             <div class="upload-mod">
@@ -62,15 +64,15 @@
             <div class="col-md-5 form-group">
                 <select id="mod-ksp-version" class="form-control">
                     {% for v in game_versions %}
-                    <option value="{{v.friendly_version}}" {% if loop.first %}selected{% endif %}>KSP {{v.friendly_version}}</option>
+                    <option value="{{v.friendly_version}}" {% if loop.first %}selected{% endif %}>Super Smash Bros. {{v.friendly_version}}</option>
                     {% endfor %}
                 </select>
             </div>
             <div class="col-md-2 form-group">
                 <label>
-                    <input type="checkbox" id="ckan" name="ckan" style="margin-top: 8px;" checked="checked"> Add mod to <a href="https://github.com/KSP-CKAN/CKAN">CKAN</a>
+                    <input type="checkbox" id="modmm" name="modmm" style="margin-top: 8px;" "> Add mod to <a href="Modulous.net">Modulous Mod Manager</a> (requires a <a href="Modulous.net">configuration file</a>)
                     <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left"
-                        title="This makes it so that users can automate the installation of your mod. Your mod won't be added to CKAN until you publish it."></span>
+                        title="This makes it so that users can automate the installation of your mod. Your mod won't be added to the mod manager until you publish it."></span>
                 </label>
             </div>
         </div>
@@ -111,9 +113,9 @@
                 <h4 class="modal-title">What can I upload?</h4>
             </div>
             <div class="modal-body">
-                <p>Kerbal Stuff is a website for hosting mods. We have a couple of basic rules about what you can upload here:</p>
+                <p>Modulous is a website for hosting mods. We have a couple of basic rules about what you can upload here:</p>
                 <ul>
-                    <li>If you didn't write code (or parts), it probably doesn't belong here. No crafts. No flag packs. And so on.</li>
+                    <li>No stolen files. If you didn't write code (or parts), it probably doesn't belong here.</li>
                     <li>Only upload mods you have the right to distribute. Check licensing!</li>
                 </ul>
                 <p>That's it! If you upload something that doesn't adhere to these rules, we will remove it. Otherwise, you're good to go!</p>

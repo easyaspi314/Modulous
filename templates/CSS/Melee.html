@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css_melee.css') }}" />
+{% endblock %}
+{% block body %}
+<div class="header">
+        <br>
+		<img src="/static/CSS/Melee.png" alt="" usemap="#cssmap">
+        <br>
+        <br>
+        <img src="/static/CSS/SSS_Melee.png" alt="" usemap="#SSSMap1">
+<map name="cssmap">
+
+<area shape="rect" coords="201,288,343,419" href="/search?query=game%3AMelee+tag%3APichu">
+<area shape="rect" coords="341,284,483,415" href="/search?query=game%3AMelee+tag%3APikachu">
+<area shape="rect" coords="1063,289,1205,420" href="/search?query=game%3AMelee+tag%3ARoy">
+<area shape="rect" coords="921,284,1063,415" href="/search?query=game%3AMelee+tag%3AMarth">
+<area shape="rect" coords="626,285,768,416" href="/search?query=game%3AMelee+tag%3AMewtwo">
+<area shape="rect" coords="778,283,920,414" href="/search?query=game%3AMelee+tag%3AMr_game_and_watch">
+<area shape="rect" coords="486,282,628,413" href="/search?query=game%3AMelee+tag%3AJigglypuff">
+<area shape="rect" coords="194,148,336,279" href="/search?query=game%3AMelee+tag%3AFox">
+<area shape="rect" coords="53,154,195,285" href="/search?query=game%3AMelee+tag%3AFalco">
+<area shape="rect" coords="335,147,477,278" href="/search?query=game%3AMelee+tag%3ANess">
+<area shape="rect" coords="487,145,629,276" href="/search?query=game%3AMelee+tag%3AIce_Climbers">
+<area shape="rect" coords="779,146,921,277" href="/search?query=game%3AMelee+tag%3ASamus">
+<area shape="rect" coords="627,148,769,279" href="/search?query=game%3AMelee+tag%3AKirby">
+<area shape="rect" coords="914,149,1056,280" href="/search?query=game%3AMelee+tag%3AZelda">
+<area shape="rect" coords="1066,147,1208,278" href="/search?query=game%3AMelee+tag%3ALink">
+<area shape="rect" coords="1202,155,1344,286" href="/search?query=game%3AMelee+tag%3AYoung_link">
+<area shape="rect" coords="1210,21,1352,152" href="/search?query=game%3AMelee+tag%3AGanondorf">
+<area shape="rect" coords="1065,12,1207,143" href="/search?query=game%3AMelee+tag%3ACaptain_falcon">
+<area shape="rect" coords="922,13,1064,144" href="/search?query=game%3AMelee+tag%3ADonkey_Kong">
+<area shape="rect" coords="632,12,774,143" href="/search?query=game%3AMelee+tag%3APeach">
+<area shape="rect" coords="779,13,921,144" href="/search?query=game%3AMelee+tag%3AYoshi">
+<area shape="rect" coords="487,12,629,143" href="/search?query=game%3AMelee+tag%3ABowser">
+<area shape="rect" coords="340,11,482,142" href="/search?query=game%3AMelee+tag%3ALuigi">
+<area shape="rect" coords="194,14,336,145" href="/search?query=game%3AMelee+tag%3AMario">
+<area shape="rect" coords="54,22,196,153" href="/search?query=game%3AMelee+tag%3ADr_mario">
+</map>
+<map name="SSSMap1">
+<area shape="rect" coords="1194,614,1324,717" href="/search?query=game%3AMelee+tag%3AKongo_jungle_64">
+<area shape="rect" coords="1063,613,1193,716" href="/search?query=game%3AMelee+tag%3AYoshis_island_64">
+<area shape="rect" coords="934,614,1064,717" href="/search?query=game%3AMelee+tag%3ADreamland">
+<area shape="rect" coords="788,613,918,716" href="/search?query=game%3AMelee+tag%3AFinal_destination">
+<area shape="rect" coords="492,434,651,567" href="/search?query=game%3AMelee+tag%3Abrinstar_depths">
+<area shape="rect" coords="651,438,810,571" href="/search?query=game%3AMelee+tag%3AFourside">
+<area shape="rect" coords="827,437,986,570" href="/search?query=game%3AMelee+tag%3ABig_blue">
+<area shape="rect" coords="989,442,1143,566" href="/search?query=game%3AMelee+tag%3APoke_floats">
+<area shape="rect" coords="1153,436,1312,569" href="/search?query=game%3AMelee+tag%3AKingdom_II">
+<area shape="rect" coords="654,614,784,717" href="/search?query=game%3AMelee+tag%3ABattlefield">
+<area shape="rect" coords="488,308,647,441" href="/search?query=game%3AMelee+tag%3ABrinstar">
+<area shape="rect" coords="658,307,817,440" href="/search?query=game%3AMelee+tag%3AOnett">
+<area shape="rect" coords="826,307,985,440" href="/search?query=game%3AMelee+tag%3AMute_city">
+<area shape="rect" coords="993,312,1147,436" href="/search?query=game%3AMelee+tag%3APokemon_Stadium">
+<area shape="rect" coords="1161,303,1320,436" href="/search?query=game%3AMelee+tag%3AKingdom">
+<area shape="rect" coords="1188,64,1350,206" href="/search?query=game%3AMelee+tag%3AFlat_zone">
+<area shape="rect" coords="1022,29,1181,162" href="/search?query=game%3AMelee+tag%3ACorneria">
+<area shape="rect" coords="1020,161,1179,294" href="/search?query=game%3AMelee+tag%3AVenom">
+<area shape="rect" coords="857,31,1016,164" href="/search?query=game%3AMelee+tag%3AFountain_of_dreams">
+<area shape="rect" coords="855,163,1014,296" href="/search?query=game%3AMelee+tag%3AGreen_greens">
+<area shape="rect" coords="689,156,848,289" href="/search?query=game%3AMelee+tag%3AYoshis_island">
+<area shape="rect" coords="691,24,850,157" href="/search?query=game%3AMelee+tag%3AYoshis_story">
+<area shape="rect" coords="523,29,682,162" href="/search?query=game%3AMelee+tag%3AGreat_Bay">
+<area shape="rect" coords="521,161,680,294" href="/search?query=game%3AMelee+tag%3ATemple">
+<area shape="rect" coords="357,26,516,159" href="/search?query=game%3AMelee+tag%3AKongo_jungle">
+<area shape="rect" coords="354,161,513,294" href="/search?query=game%3AMelee+tag%3AJungle_japes">
+<area shape="rect" coords="186,164,345,297" href="/search?query=game%3AMelee+tag%3ARainbow_cruise">
+<area shape="rect" coords="188,32,347,165" href="/search?query=game%3AMelee+tag%3APeachs_castle">
+<area shape="rect" coords="19,73,181,215" href="/search?query=game%3AMelee+tag%3AIcicle_Mountain">
+</map>
+
+
+</div>
+
+{% block javascript %}
+    <script type="text/javascript">
+        {% include "konami.js" %}
+        {% include "index.js" %}
+    </script>
+    <!-- The contents of myscript.js will be loaded inside the script tag -->
+{% endblock %}
+{% endblock %}

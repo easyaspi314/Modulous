@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block title %}
-<title>{{ mod.name }} on Kerbal Stuff</title>
+<title>{{ mod.name }} on Modulous</title>
 {% endblock %}
 {% block styles %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mod.css') }}" />
@@ -64,12 +64,9 @@ window.thirty_days_ago = new Date({{ thirty_days_ago | tojson }});
 {% endif %}
 <div class="container lead">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <h1 title="{{ mod.name }}">
                 {{ mod.name }}
-                {% if mod.ckan %}
-                <span class="badge" title="This mod is listed in CKAN.">CKAN</span>
-                {% endif %}
             </h1>
         </div>
         <div class="{% if user %}col-md-2{% else %}col-md-4{% endif %}">
@@ -77,6 +74,11 @@ window.thirty_days_ago = new Date({{ thirty_days_ago | tojson }});
                 href="{{ url_for("mods.download", mod_id=mod.id, mod_name=mod.name, version=latest.friendly_version) }}">
                 Download</a>
         </div>
+		{% if mod.modmm %}
+		<div class="col-md-2">
+			<a  class="btn btn-block btn-lg btn-primary" id="download-link-primary"	href="modulous://install/{{ mod.id }}">Manager</a>
+		</div>
+		{% endif %}
         {% if user %}
         <div class="col-md-2">
             {% if following_mod(mod) %}
@@ -119,9 +121,8 @@ window.thirty_days_ago = new Date({{ thirty_days_ago | tojson }});
                             <div class="timeline-label">
                                 <h2>
                                     <span class="text-muted">
-                                        KSP Version:
                                     </span>
-                                    {{ latest.ksp_version }}
+                                    Super Smash Bros. {{ latest.ksp_version }}
                                 </h2>
                             </div>
                         </div>
@@ -136,7 +137,7 @@ window.thirty_days_ago = new Date({{ thirty_days_ago | tojson }});
                             <div class="timeline-label">
                                 <h2>
                                     <span class="text-muted">
-                                        Source code:
+                                        Forum Post:
                                     </span>
                                     <a href="{{ mod.source_link }}">{{ mod.source_link }}</a>
                                 </h2>
@@ -161,6 +162,22 @@ window.thirty_days_ago = new Date({{ thirty_days_ago | tojson }});
                         </div>
                     </div>
                     
+                                        <div class="timeline-entry">
+                        <div class="timeline-entry-inner">
+                            <div class="timeline-icon">
+                                <span class="glyphicon glyphicon-info-sign"></span>
+                            </div>
+                            <div class="timeline-label">
+                                <h2>
+                                    <span class="text-muted">
+                                        Tags:
+                                    </span>
+                                    {{mod.tags}}
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
 
@@ -176,17 +193,24 @@ window.thirty_days_ago = new Date({{ thirty_days_ago | tojson }});
                                 <h2>
                                     <span class="text-muted">
                                         {% if total_authors == 1 %}
+                                        {% if mod.other_authors == None %}
                                         Author:
                                         {% else %}
                                         Authors:
                                         {% endif %}
+                                        {% else %}
+                                        Authors:
+                                        {% endif %}
                                     </span>
-                                    <a href="/profile/{{ mod.user.username }}">{{ mod.user.username }}</a>{%if total_authors != 1%},{%endif %}
+                                    <a href="/profile/{{ mod.user.username }}">{{ mod.user.username }}</a>{%if total_authors != 1 or mod.other_authors != None %},{%endif %}
                                     {% for author in mod.shared_authors %}
                                     {% if author.accepted %}
                                     <a href="/profile/{{ author.user.username }}">{{ author.user.username }}</a>{%if not loop.last%},{%endif%}
                                     {% endif %}
                                     {% endfor %}
+                                    {% if mod.other_authors != None %}
+                                    {{ mod.other_authors }}
+                                    {% endif %}
                                 </h2>
                             </div>
                         </div>
@@ -254,14 +278,6 @@ window.thirty_days_ago = new Date({{ thirty_days_ago | tojson }});
     </div>
 </div>
 
-{% if outdated %}
-<div class="well well-sm danger">
-    <div class="container">
-        <h1>Outdated Mod</h1>
-        <p>This mod is not known to work with the latest version of Kerbal Space Program. Proceed with caution.</p>
-    </div>
-</div>
-{% endif %}
 
 {% if editable %}
 <div class="well" style="margin-bottom: 0;">
@@ -296,18 +312,6 @@ window.thirty_days_ago = new Date({{ thirty_days_ago | tojson }});
                 {% endif %}
                 {% endif %}
             </div>
-        </div>
-        {% if editable and latest.ksp_version != game_versions[0].friendly_version %}
-        <hr />
-        <div class="alert alert-info" style="margin-bottom: 0;">
-            <p>
-                This mod seems to be outdated. Is the latest version compatible with Kerbal Space Program {{ game_versions[0].friendly_version }}?
-                <button style="margin-left: 10px;" class="btn btn-primary autoupdate" data-toggle="modal" data-target="#confirm-update">Yes, update automatically</button>
-                <a href="{{ url_for("mods.update", id=mod.id, mod_name=mod.name) }}" class="btn btn-default">No, update manually</a>
-            </p>
-        </div>
-        {% endif %}
-    </div>
 </div>
 {% endif %}
 
@@ -316,6 +320,7 @@ window.thirty_days_ago = new Date({{ thirty_days_ago | tojson }});
         <a data-toggle="tab" href="#info" class="btn btn-primary">Information</a>
         <a data-toggle="tab" href="#changelog" class="btn btn-warning">Changelog</a>
         <a data-toggle="tab" href="#stats" class="btn btn-info">Stats</a>
+		<a data-toggle="tab" href="#comments" class="btn btn-primary">Comments</a>
     </div>
 </div>
 
@@ -323,6 +328,29 @@ window.thirty_days_ago = new Date({{ thirty_days_ago | tojson }});
     <div class="tab-content">
         <div class="tab-pane active" id="info">
             {{ mod.description | markdown }}
+        </div>
+		<div class="tab-pane" id="comments">
+			<div id="disqus_thread"></div>
+			<script type="text/javascript">
+				/* * * CONFIGURATION VARIABLES * * */
+				disqus_config = function() {
+					this.callbacks.onReady = [function() {
+					$('#disqus_thread iframe').css({
+					'	height': '327px',
+						'height': 'auto !important',
+						'min-height': '327px'
+							});
+					}];
+				};
+				var disqus_shortname = 'modulous';
+    
+				/* * * DON'T EDIT BELOW THIS LINE * * */
+				(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+				})();
+			</script>
         </div>
         <div class="tab-pane" id="changelog">
             <div class="timeline-centered">
@@ -334,7 +362,7 @@ window.thirty_days_ago = new Date({{ thirty_days_ago | tojson }});
                             <span class="glyphicon glyphicon-asterisk"></span>
                         </div>
                         <div class="timeline-label">
-                            <h2>Version {{ v.friendly_version }} <small>for Kerbal Space Program {{ v.ksp_version }}</small></h2>
+                            <h2>Version {{ v.friendly_version }} <small>for Super Smash Bros. {{ v.ksp_version }}</small></h2>
                             <p><small class="text text-muted">Released on {{ v.created.strftime("%Y-%m-%d") }}</small></p>
                             {% if not v.changelog %}
                             <p><em>No changelog provided</em></p>
@@ -533,4 +561,16 @@ window.thirty_days_ago = new Date({{ thirty_days_ago | tojson }});
         </div>
     </div>
 </div>
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'modulous'; // required: replace example with your forum shortname
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
 {% endblock %}

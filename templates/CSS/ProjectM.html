@@ -1,0 +1,158 @@
+{% extends "layout.html" %}
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css.css') }}" />
+{% endblock %}
+{% block body %}
+<div class="header">
+        <br>
+		<img src="/static/CSS/ProjectM.png" alt="Planets" usemap="#cssmap">
+        <br>
+        <br>
+        <img src="/static/CSS/SSS_ProjectM.png" alt="Planets" usemap="#SSSMap1">
+        <br>
+        <br>
+        <img src="/static/CSS/SSS_ProjectM2.png" alt="Planets" usemap="#SSSMap2">
+<map name="cssmap">
+
+<area shape="rect" coords="30,1,158,89" href="/search?query=game%3AProjectM+tag%3AWario" alt="Wario" title="Wario"/>
+
+<area shape="rect" coords="165,1,293,89" href="/search?query=game%3AProjectM+tag%3AMario" alt="Mario" title="Mario"/>
+
+<area shape="rect" coords="300,1,428,89" href="/search?query=game%3AProjectM+tag%3ALuigi" alt="Luigi" title="Luigi"/>
+
+<area shape="rect" coords="435,1,563,89" href="/search?query=game%3AProjectM+tag%3APeach" alt="Peach" title="Peach"/>
+
+<area shape="rect" coords="570,1,698,89" href="/search?query=game%3AProjectM+tag%3ABowser" alt="Bowser" title="Bowser"/>
+
+<area shape="rect" coords="705,1,833,89" href="/search?query=game%3AProjectM+tag%3AYoshi" alt="Yoshi" title="Yoshi"/>
+
+<area shape="rect" coords="840,1,968,89" href="/search?query=game%3AProjectM+tag%3ADonkey_kong" alt="DonkeyKong" title="DonkeyKong"/>
+
+<area shape="rect" coords="975,1,1103,89" href="/search?query=game%3AProjectM+tag%3ADiddy_kong" alt="DiddyKong" title="DiddyKong"/>
+
+<area shape="rect" coords="1110,1,1238,89" href="/search?query=game%3AProjectM+tag%3ACaptain_falcon" alt="CaptainFalcon" title="CaptainFalcon"/>
+
+<area shape="rect" coords="30,89,158,177" href="/search?query=game%3AProjectM+tag%3AWolf" alt="Wolf" title="Wolf"/>
+
+<area shape="rect" coords="165,89,293,177" href="/search?query=game%3AProjectM+tag%3AFox" alt="Fox" title="Fox"/>
+
+<area shape="rect" coords="300,89,428,177" href="/search?query=game%3AProjectM+tag%3AFalco" alt="Falco" title="Falco"/>
+
+<area shape="rect" coords="435,89,563,177" href="/search?query=game%3AProjectM+tag%3AIce_climbers" alt="IceClimbers" title="IceClimbers"/>
+
+<area shape="rect" coords="570,89,698,177" href="/search?query=game%3AProjectM+tag%3AZelda" alt="Zelda" title="Zelda"/>
+
+<area shape="rect" coords="705,89,833,177" href="/search?query=game%3AProjectM+tag%3ASheik" alt="Sheik" title="Sheik"/>
+
+<area shape="rect" coords="840,89,968,177" href="/search?query=game%3AProjectM+tag%3ALink" alt="Link" title="Link"/>
+
+<area shape="rect" coords="975,89,1103,177" href="/search?query=game%3AProjectM+tag%3AToon_link" alt="ToonLink" title="ToonLink"/>
+
+<area shape="rect" coords="1110,89,1238,177" href="/search?query=game%3AProjectM+tag%3AGanondorf" alt="Ganondorf" title="Ganondorf"/>
+
+<area shape="rect" coords="30,177,158,265" href="/search?query=game%3AProjectM+tag%3AMewtwo" alt="Mewtwo" title="Mewtwo"/>
+
+<area shape="rect" coords="165,177,293,265" href="/search?query=game%3AProjectM+tag%3ALucario" alt="Lucario" title="Lucario"/>
+
+<area shape="rect" coords="300,177,428,265" href="/search?query=game%3AProjectM+tag%3APikachu" alt="Pikachu" title="Pikachu"/>
+
+<area shape="rect" coords="435,177,563,265" href="/search?query=game%3AProjectM+tag%3AJigglypuff" alt="Jigglypuff" title="Jigglypuff"/>
+
+<area shape="rect" coords="570,177,698,265" href="/search?query=game%3AProjectM+tag%3ASquirtle" alt="Squirtle" title="Squirtle"/>
+
+<area shape="rect" coords="705,177,833,265" href="/search?query=game%3AProjectM+tag%3AIvysaur" alt="Ivysaur" title="Ivysaur"/>
+
+<area shape="rect" coords="840,177,968,265" href="/search?query=game%3AProjectM+tag%3ACharizard" alt="Charizard" title="Charizard"/>
+
+<area shape="rect" coords="975,177,1103,265" href="/search?query=game%3AProjectM+tag%3ASamus" alt="Samus" title="Samus"/>
+
+<area shape="rect" coords="1110,177,1238,265" href="/search?query=game%3AProjectM+tag%3AZero_suit_samus" alt="ZeroSuitSamus" title="ZeroSuitSamus"/>
+
+<area shape="rect" coords="30,265,158,353" href="/search?query=game%3AProjectM+tag%3ALucas" alt="Lucas" title="Lucas"/>
+
+<area shape="rect" coords="165,265,293,353" href="/search?query=game%3AProjectM+tag%3ANess" alt="Ness" title="Ness"/>
+
+<area shape="rect" coords="300,265,428,353" href="/search?query=game%3AProjectM+tag%3APit" alt="Pit" title="Pit"/>
+
+<area shape="rect" coords="435,265,563,353" href="/search?query=game%3AProjectM+tag%3AKirby" alt="Kirby" title="Kirby"/>
+
+<area shape="rect" coords="570,265,698,353" href="/search?query=game%3AProjectM+tag%3AMetaKnight" alt="MetaKnight" title="MetaKnight"/>
+
+<area shape="rect" coords="705,265,833,353" href="/search?query=game%3AProjectM+tag%3ADedede" alt="Dedede" title="Dedede"/>
+
+<area shape="rect" coords="840,265,968,353" href="/search?query=game%3AProjectM+tag%3AIke" alt="Ike" title="Ike"/>
+
+<area shape="rect" coords="975,265,1103,353" href="/search?query=game%3AProjectM+tag%3AMarth" alt="Marth" title="Marth"/>
+
+<area shape="rect" coords="1110,265,1238,353" href="/search?query=game%3AProjectM+tag%3ARoy" alt="Roy" title="Roy"/>
+
+<area shape="rect" coords="229,353,357,441" href="/search?query=game%3AProjectM+tag%3AOlimar" alt="Olimar" title="Olimar"/>
+
+<area shape="rect" coords="364,353,492,441" href="/search?query=game%3AProjectM+tag%3ARob" alt="Rob" title="Rob"/>
+
+<area shape="rect" coords="499,353,627,441" href="/search?query=game%3AProjectM+tag%3AMr_game_and_watch" alt="MrGameAndWatch" title="MrGameAndWatch"/>
+
+<area shape="rect" coords="634,353,762,441" href="/search?query=game%3AProjectM+tag%3ASnake" alt="Snake" title="Snake"/>
+
+<area shape="rect" coords="769,353,897,441" href="/search?query=game%3AProjectM+tag%3ASonic" alt="Sonic" title="Sonic"/>
+
+<area shape="rect" coords="904,353,1032,441" href="/c/" alt="Random" title="Random"/>
+</map>
+<map name="SSSMap1">
+<area shape="rect" coords="887,232,1018,337" href="/search?query=game%3AProjectM+tag%3ADreamland">
+<area shape="rect" coords="599,233,730,338" href="/search?query=game%3AProjectM+tag%3APokemon_stadium_2">
+<area shape="rect" coords="742,234,873,339" href="/search?query=game%3AProjectM+tag%3ADelfinos_secret">
+<area shape="rect" coords="305,233,436,338" href="/search?query=game%3AProjectM+tag%3ASmashville">
+<area shape="rect" coords="451,234,582,339" href="/search?query=game%3AProjectM+tag%3ABattlefield">
+<area shape="rect" coords="159,233,290,338" href="/search?query=game%3AProjectM+tag%3AGreen_hill_zone">
+<area shape="rect" coords="15,233,146,338" href="/search?query=game%3AProjectM+tag%3AYoshis_story">
+<area shape="rect" coords="21,116,152,221" href="/search?query=game%3AProjectM+tag%3ACastle_siege">
+<area shape="rect" coords="165,116,296,221" href="/search?query=game%3AProjectM+tag%3AWarioWare">
+<area shape="rect" coords="452,116,583,221" href="/search?query=game%3AProjectM+tag%3AFinal_destination">
+<area shape="rect" coords="308,116,439,221" href="/search?query=game%3AProjectM+tag%3AFountain_of_dreams">
+<area shape="rect" coords="740,116,871,221" href="/search?query=game%3AProjectM+tag%3ADistant_planet">
+<area shape="rect" coords="596,116,727,221" href="/search?query=game%3AProjectM+tag%3AYoshis_Island">
+<area shape="rect" coords="883,117,1014,222" href="/search?query=game%3AProjectM+tag%3ANorfair">
+<area shape="rect" coords="882,1,1013,106" href="/search?query=game%3AProjectM+tag%3AInfinite_glacier">
+<area shape="rect" coords="595,0,726,105" href="/search?query=game%3AProjectM+tag%3ASaffron_city">
+<area shape="rect" coords="739,0,870,105" href="/search?query=game%3AProjectM+tag%3APeachs_Castle">
+<area shape="rect" coords="307,0,438,105" href="/search?query=game%3AProjectM+tag%3AMetal_cavern">
+<area shape="rect" coords="451,0,582,105" href="/search?query=game%3AProjectM+tag%3ABowsers_castle">
+<area shape="rect" coords="164,0,295,105" href="/search?query=game%3AProjectM+tag%3AHyrule_castle">
+<area shape="rect" coords="20,0,151,105" href="/search?query=game%3AProjectM+tag%3ALylat_cruise">
+</map>
+<map name="SSMap2">
+<area shape="rect" coords="887,232,1018,337" href="/search?query=game%3AProjectM+tag%3APictochat">
+<area shape="rect" coords="599,233,730,338" href="/search?query=game%3AProjectM+tag%3ASkyworld">
+<area shape="rect" coords="742,234,873,339" href="/search?query=game%3AProjectM+tag%3AHanenbow">
+<area shape="rect" coords="305,233,436,338" href="/search?query=game%3AProjectM+tag%3AHalberd">
+<area shape="rect" coords="451,234,582,339" href="/search?query=game%3AProjectM+tag%3AFrigate_orpheon">
+<area shape="rect" coords="159,233,290,338" href="/search?query=game%3AProjectM+tag%3ARumble_falls">
+<area shape="rect" coords="15,233,146,338" href="/search?query=game%3AProjectM+tag%3ATraining_room">
+<area shape="rect" coords="21,116,152,221" href="/search?query=game%3AProjectM+tag%3ALuigis_mansion">
+<area shape="rect" coords="165,116,296,221" href="/search?query=game%3AProjectM+tag%3AJungle_japes">
+<area shape="rect" coords="452,116,583,221" href="/search?query=game%3AProjectM+tag%3ABrinstar">
+<area shape="rect" coords="308,116,439,221" href="/search?query=game%3AProjectM+tag%3ACorneria">
+<area shape="rect" coords="740,116,871,221" href="/search?query=game%3AProjectM+tag%3APirate_Ship">
+<area shape="rect" coords="596,116,727,221" href="/search?query=game%3AProjectM+tag%3ATemple">
+<area shape="rect" coords="883,117,1014,222" href="/search?query=game%3AProjectM+tag%3APokemon_stadium">
+<area shape="rect" coords="882,1,1013,106" href="/search?query=game%3AProjectM+tag%3AFlat_Zone_2">
+<area shape="rect" coords="595,0,726,105" href="/search?query=game%3AProjectM+tag%3ABig_blue">
+<area shape="rect" coords="739,0,870,105" href="/search?query=game%3AProjectM+tag%3APort_town_Aero_dive">
+<area shape="rect" coords="307,0,438,105" href="/search?query=game%3AProjectM+tag%3AFourside">
+<area shape="rect" coords="451,0,582,105" href="/search?query=game%3AProjectM+tag%3AOnett">
+<area shape="rect" coords="164,0,295,105" href="/search?query=game%3AProjectM+tag%3AKongo_jungle">
+<area shape="rect" coords="20,0,151,105" href="/search?query=game%3AProjectM+tag%3AShadow_moses_island">
+</map>
+
+
+</div>
+
+{% block javascript %}
+    <script type="text/javascript">
+        {% include "konami.js" %}
+        {% include "index.js" %}
+    </script>
+    <!-- The contents of myscript.js will be loaded inside the script tag -->
+{% endblock %}
+{% endblock %}

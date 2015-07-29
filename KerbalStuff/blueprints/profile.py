@@ -44,12 +44,6 @@ def profile(username):
         profile.description = request.form.get('description')
         profile.twitterUsername = request.form.get('twitter')
         profile.forumUsername = request.form.get('ksp-forum-user')
-        result = getForumId(profile.forumUsername)
-        if not result:
-            profile.forumUsername = ''
-        else:
-            profile.forumUsername = result['name']
-            profile.forumId = result['id']
         profile.ircNick = request.form.get('irc-nick')
         profile.backgroundMedia = request.form.get('backgroundMedia')
         bgOffsetX = request.form.get('bg-offset-x')

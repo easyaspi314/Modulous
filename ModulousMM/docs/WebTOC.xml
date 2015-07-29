@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Title="Welcome to the Modulous Mod Manager documentation" Url="html/e22981ff-8c54-4c84-8b2d-ef10062698c1.htm" />
+  <HelpTOCNode Id="9a542577-6e3f-4689-92bc-d7c6c4bbfdce" Title="Modder Documentation">
+    <HelpTOCNode Title="How to make a mod work with the mod manager" Url="html/172a92a9-3da1-4a1f-8cd5-a2468aa522ee.htm" />
+    <HelpTOCNode Title="How to write an installation script" Url="html/2d4631ba-9ee0-45fd-b822-08f9e7ca1ebf.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="92374440-702b-4fd6-8acb-6d6cad51ca34" Title="Version History" Url="html/392392f2-b4c9-44c1-b08d-e7d3814a8263.htm">
+    <HelpTOCNode Title="Version 1.0.0.0" Url="html/e9b199f2-35b6-4179-9f06-d07329fe54cd.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="7bf12416-8c39-47fc-807a-d8abf77c325e" Title="ModulousLib" Url="html/767dc421-9799-2928-8f73-14a42eeabceb.htm">
+    <HelpTOCNode Id="0e0c9779-7904-4f6f-b2bb-82ca21681f1c" Title="Globals Class" Url="html/6ed7c1e7-1aac-1a28-3016-ca1525cb6e76.htm">
+      <HelpTOCNode Title="Globals Constructor " Url="html/98f70320-30ca-0143-451f-2984cf19342b.htm" />
+      <HelpTOCNode Title="Globals Methods" Url="html/a07d4a48-0450-eed0-879b-71f45e2c43cc.htm" />
+      <HelpTOCNode Id="1c68f97f-77f8-4759-b3ed-f369588d1b75" Title="Globals Properties" Url="html/abf076be-e345-be7c-14ad-7c486d36c880.htm">
+        <HelpTOCNode Title="AssemblyDirectory Property " Url="html/be02728d-602d-bd53-8fbf-75d877ceda57.htm" />
+        <HelpTOCNode Title="site_url Property " Url="html/f269f36b-523f-ab40-480a-c4c2c8fd1d28.htm" />
+        <HelpTOCNode Title="temporary_path Property " Url="html/9f918428-5fab-08dc-1ee9-42dda8e3b020.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ec676e3a-c896-44a4-9f92-1eef69d0213d" Title="LocalMod Class" Url="html/fe0daf49-1185-7cac-2be8-4e99be3289b9.htm">
+      <HelpTOCNode Id="c4325cf1-3eaf-4018-a146-87dca40dd386" Title="LocalMod Constructor " Url="html/ef533991-9197-74ac-dcc8-9b425bb2dfce.htm">
+        <HelpTOCNode Title="LocalMod Constructor (ModConfig)" Url="html/26591fd6-f051-42c1-26df-5d16cadb04f0.htm" />
+        <HelpTOCNode Title="LocalMod Constructor (OnlineMod)" Url="html/f71f3a24-5459-a9bc-8d62-11dcd109f990.htm" />
+        <HelpTOCNode Title="LocalMod Constructor (OnlineMod, ModConfig)" Url="html/b92e7160-80a3-9fd1-3562-eb70b4f69682.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="LocalMod Methods" Url="html/289f53d8-3e54-6df7-be7e-f1ecd320420c.htm" />
+      <HelpTOCNode Id="cd0871ab-e908-42c4-a40a-db326d8e0e1a" Title="LocalMod Properties" Url="html/7fcda12b-1d5a-a464-de5b-ee0c72ed345f.htm">
+        <HelpTOCNode Title="installed_mod Property " Url="html/2d62b208-2cc7-87d7-95b6-5f01949727ea.htm" />
+        <HelpTOCNode Title="is_installed Property " Url="html/7ff2afc8-39af-5226-6a84-3fc3dc7a1a53.htm" />
+        <HelpTOCNode Title="is_online Property " Url="html/0af2b540-3f1c-e3a4-6d8d-f31b4e5b8e57.htm" />
+        <HelpTOCNode Title="online_mod Property " Url="html/405c4766-409d-5d7c-985d-7c686317a811.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="65164295-aa9a-4e6d-9a88-7c6d8a6cef04" Title="ModConfig Class" Url="html/4df96d1a-7642-d4ee-b703-1f6aae918ed5.htm">
+      <HelpTOCNode Title="ModConfig Constructor " Url="html/da8f8afe-18d2-bce3-f0a1-46da0df0162c.htm" />
+      <HelpTOCNode Id="ef4197ed-8b5c-4bd1-8054-dbae1200a6f3" Title="ModConfig Fields" Url="html/c7b44c21-ef9a-c52c-5d95-c1682300a843.htm">
+        <HelpTOCNode Title="id Field" Url="html/7805603e-06f6-f438-83b2-72bb8056f9f4.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="dae1768e-9177-4b90-ad4f-fadf8b386941" Title="ModConfig Methods" Url="html/50195f3f-3d9e-e58d-18d7-70762c048a53.htm">
+        <HelpTOCNode Title="FromFile Method " Url="html/04da1a2a-fa09-7e83-d6dd-14a34fee1353.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="2f55816c-ac63-494f-bb20-3adf8ba8dce0" Title="ModConfig Properties" Url="html/c2899f46-a2bb-71c4-bbed-6c263b4932a2.htm">
+        <HelpTOCNode Title="author Property " Url="html/796b7368-6829-fbe9-32fa-b6bb36f7bf34.htm" />
+        <HelpTOCNode Title="game Property " Url="html/5afe318b-7adb-10a6-8d3f-be3b0ae128f3.htm" />
+        <HelpTOCNode Title="install_script Property " Url="html/737d18fd-7a26-4816-d5ef-fae571cced4e.htm" />
+        <HelpTOCNode Title="name Property " Url="html/ba28c640-462f-550c-8005-ac5354a4c799.htm" />
+        <HelpTOCNode Title="online_mod Property " Url="html/cd315a5c-2715-96f0-30fc-a4370707700d.htm" />
+        <HelpTOCNode Title="requires_brawlex Property " Url="html/cfc74781-5c98-4948-df60-8a7ebc4bce97.htm" />
+        <HelpTOCNode Title="version Property " Url="html/b18fbdd5-901c-d04e-2365-8b456a3f2c30.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="930db9a0-40b1-46ca-ba7e-308b23e3b4a8" Title="ModVersion Class" Url="html/cd46fbd3-8f6a-5c97-d1f7-3dc90fe04fd0.htm">
+      <HelpTOCNode Title="ModVersion Constructor " Url="html/406b499b-9915-a7d6-0219-4c11e4ebf62d.htm" />
+      <HelpTOCNode Title="ModVersion Methods" Url="html/ef2befa0-ebde-a739-58c2-0e9fcf58bc1c.htm" />
+      <HelpTOCNode Id="657601cd-52a3-4f65-9a4d-c45fa296e49f" Title="ModVersion Properties" Url="html/496365e1-6f3f-fc9c-6596-f12041c18dc4.htm">
+        <HelpTOCNode Title="changelog Property " Url="html/4e732162-93a7-0d8e-bb25-ac0dacea1a86.htm" />
+        <HelpTOCNode Title="download_path Property " Url="html/6814bd12-79f0-8456-8e58-1cd08ec1fae3.htm" />
+        <HelpTOCNode Title="friendly_version Property " Url="html/5cd257ab-73d4-9e5a-8bf8-4ac379b3ca57.htm" />
+        <HelpTOCNode Title="id Property " Url="html/9b7eb55f-5ef4-6644-ec6d-f19ca07be038.htm" />
+        <HelpTOCNode Title="ksp_version Property " Url="html/6dcefd4e-2dc7-753a-e898-8e5ffc5813b6.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="00814b44-1d4f-4d41-a827-730c369d616c" Title="OnlineMod Class" Url="html/81cdb509-cb67-9459-b40f-c2dada9e9d03.htm">
+      <HelpTOCNode Title="OnlineMod Constructor " Url="html/2a3abf37-a1fd-7a35-35d8-68c0ce2b47e9.htm" />
+      <HelpTOCNode Id="e2c923d5-0662-4f8c-8fa2-7c73f1aa7e90" Title="OnlineMod Methods" Url="html/2ddfdcc7-832b-9c06-d641-50e982a4b1e4.htm">
+        <HelpTOCNode Title="get_local_mod Method " Url="html/a7bf9c3b-3dec-d352-4f38-3950766101c8.htm" />
+        <HelpTOCNode Title="get_mod_from_API Method " Url="html/23e44b3c-aa4e-3593-e116-6ec12049e9eb.htm" />
+        <HelpTOCNode Title="get_mod_from_file Method " Url="html/31e66505-27d7-2e14-2a82-c4f6a84cdc55.htm" />
+        <HelpTOCNode Title="install_mod_from_file Method " Url="html/86f97532-dc61-1807-fffb-9ed6c4c18801.htm" />
+        <HelpTOCNode Title="install_mod_from_metafile Method " Url="html/dc1cb427-5b4e-aad5-41b3-e9ddc087fe54.htm" />
+        <HelpTOCNode Title="install_mod_from_site Method " Url="html/8dcf576b-31fb-34d8-8def-11a01a202c6f.htm" />
+        <HelpTOCNode Title="save_to_file Method " Url="html/2758f961-573a-ab65-fcd5-b347e86b6696.htm" />
+        <HelpTOCNode Title="update_mod_from_file Method " Url="html/58631647-a5f7-cce7-7757-0b70d4df55fe.htm" />
+        <HelpTOCNode Title="update_mod_from_metafile Method " Url="html/84e60d01-9317-b59a-8f31-9842b62630ad.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="ad542d52-0f3c-4f77-bffa-d8b31dc7abde" Title="OnlineMod Properties" Url="html/05997d54-5453-4cab-0538-9b3d4cbe8d9c.htm">
+        <HelpTOCNode Title="author Property " Url="html/d9ce5634-6700-895f-b25e-a1a6260268e7.htm" />
+        <HelpTOCNode Title="default_version_id Property " Url="html/3783fbc9-cd26-42d9-1f97-bf7b535049ba.htm" />
+        <HelpTOCNode Title="description Property " Url="html/6a60405e-415a-5e1b-29d2-5328c7d9a158.htm" />
+        <HelpTOCNode Title="description_html Property " Url="html/67f5c14c-e104-3c35-94d3-12cf96c8ecab.htm" />
+        <HelpTOCNode Title="donations Property " Url="html/07e3f323-ab31-7591-3ed3-ff51cc5d9c95.htm" />
+        <HelpTOCNode Title="downloads Property " Url="html/0f5b4c86-ae6a-903b-fbaf-90a8b410e2d2.htm" />
+        <HelpTOCNode Title="followers Property " Url="html/c8023af7-f39f-13af-455a-67cb92254113.htm" />
+        <HelpTOCNode Title="id Property " Url="html/4abea5c5-fc57-2475-02c5-a80884c79f4b.htm" />
+        <HelpTOCNode Title="license Property " Url="html/0fa6eab3-788e-a5d8-d63d-b52ffd17a2e2.htm" />
+        <HelpTOCNode Title="name Property " Url="html/3b5ed219-8330-b5a6-698d-d8432bb0194e.htm" />
+        <HelpTOCNode Title="other_authors Property " Url="html/243e4c14-4d18-dd04-eb03-1e063cae3995.htm" />
+        <HelpTOCNode Title="short_description Property " Url="html/977ce747-f6d4-f719-ef29-5271e9f9558c.htm" />
+        <HelpTOCNode Title="source_code Property " Url="html/0f370cf1-ded8-09d7-803e-ecc31362e238.htm" />
+        <HelpTOCNode Title="tags Property " Url="html/c415b356-0ea7-eea2-5ace-a05fc79040db.htm" />
+        <HelpTOCNode Title="url Property " Url="html/cc47795a-d60d-7584-4092-1f11c793a94f.htm" />
+        <HelpTOCNode Title="versions Property " Url="html/27e3b9ef-1174-9d70-5379-9f80324e65f8.htm" />
+        <HelpTOCNode Title="website Property " Url="html/d63bcd8e-dc36-e8fa-d15d-00cf0f3f7e5d.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f81cf0e1-b8c2-44cc-98bb-4ec1525748c0" Title="SDCard Class" Url="html/afa837d0-72a0-1a13-e32c-b26d4a00e24b.htm">
+      <HelpTOCNode Title="SDCard Constructor " Url="html/e699de47-5e62-90fe-a6bc-287af0be56d5.htm" />
+      <HelpTOCNode Id="26577464-3cf4-4c37-af84-36952bf250fb" Title="SDCard Methods" Url="html/e1a69301-d65f-0f95-0e86-732fd9b36ceb.htm">
+        <HelpTOCNode Title="copy_from_mod_to_sd_card Method " Url="html/6fc687d5-a86b-dee2-fca6-488455864c4c.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b963e19c-6dae-4c67-8eb6-2d647111609c" Title="SDCard Properties" Url="html/4e430fac-8225-bc70-08d4-1cb7e14332e8.htm">
+        <HelpTOCNode Title="sd_card_mod_store_path Property " Url="html/cf70c987-cf56-62d9-b301-0724e4787c34.htm" />
+        <HelpTOCNode Title="sd_card_path Property " Url="html/4c50f3ce-de30-16fb-4b20-a5d8c2c02b25.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f3173e79-16ea-45b4-8b6e-21c853a92f94" Title="SDManager Class" Url="html/1d4f25b0-9e90-6609-c5bc-96c5fc588273.htm">
+      <HelpTOCNode Title="SDManager Constructor " Url="html/6b562cbf-effc-f1fe-73c4-91d8b0153c0a.htm" />
+      <HelpTOCNode Id="abfd7f7e-c4fa-44c6-8ace-1e7000fc8772" Title="SDManager Methods" Url="html/7835ab48-ea41-104a-acb2-f6c8fb431452.htm">
+        <HelpTOCNode Title="set_sd_card Method " Url="html/1d3659e0-48a6-5692-c937-6a5a68032bfc.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="3c9bc421-2e59-4cd3-9769-e3ee8c2e9f9f" Title="ModulousLib.BrawlEX" Url="html/51be3207-abfb-23ec-6a7a-a630f196665d.htm">
+    <HelpTOCNode Id="f5a1c160-4218-4fc7-b56d-7032bd49f710" Title="CharacterManager Class" Url="html/b303a29c-07f8-7124-e157-3837c4913350.htm">
+      <HelpTOCNode Title="CharacterManager Constructor " Url="html/668191e0-c836-bff7-85d6-7db001cd4432.htm" />
+      <HelpTOCNode Id="d6da080c-1e47-4145-a424-23ce5840943d" Title="CharacterManager Methods" Url="html/f0e51cf9-7162-a1fe-e654-0f68a5218670.htm">
+        <HelpTOCNode Title="add_character_from_mod_root Method " Url="html/b8a5a7f0-587f-696a-cf03-c737fe6d3bee.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="0103a64c-d90e-43fa-9eb9-3c72742b0c2a" Title="ModulousLib.Config" Url="html/be71497e-d959-dfa0-9a91-e6cba9cf2308.htm">
+    <HelpTOCNode Id="a11dbd31-8cba-4da9-b2fb-63189cc0a21d" Title="ConfigFile Class" Url="html/8f42763a-3bd8-86f6-43f5-279387fdccbb.htm">
+      <HelpTOCNode Title="ConfigFile Constructor " Url="html/462fff05-c8de-5496-ef51-a6022c805d5e.htm" />
+      <HelpTOCNode Id="85f39099-a346-4a4e-bdf0-63e3ba6a464e" Title="ConfigFile Methods" Url="html/4ac61cdc-8358-9572-38e7-14e42ddb94a4.htm">
+        <HelpTOCNode Title="FromFile Method " Url="html/50946fb6-2895-916f-bfc9-276cdc0b9c68.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0c61bcf2-9999-4713-90a6-69e56754492b" Title="ConfigFile Properties" Url="html/0202a7c0-f098-406f-0872-b4562675c9f6.htm">
+        <HelpTOCNode Title="sd_card_location Property " Url="html/7004b472-bce4-ad81-99ab-fabf8f956617.htm" />
+        <HelpTOCNode Title="version Property " Url="html/9f72b2c5-a46e-1f82-620e-bf7efd50c9b1.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="0cd7f355-6aa4-4361-b0d2-a86b415c4bec" Title="ModulousLib.Web" Url="html/aec21ed9-2ba9-55a5-9af3-09a1473d8464.htm">
+    <HelpTOCNode Id="a3b1fa1c-db95-4757-a5a9-ec056cbcce6d" Title="ModPage Class" Url="html/ccde6db7-a567-8839-4d1d-4069e1f3f209.htm">
+      <HelpTOCNode Title="ModPage Constructor " Url="html/14677dd5-97e1-d692-4692-216a06ee7ab1.htm" />
+      <HelpTOCNode Id="c496af32-8c1d-4a41-926a-6f314119b944" Title="ModPage Methods" Url="html/f7144937-a007-ae43-a32f-61d34a5f02d6.htm">
+        <HelpTOCNode Title="browse_mods_from_api Method " Url="html/7cb0b875-3b06-17be-e006-9a454f534e33.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0e02efdd-8c14-4d7d-b18a-d259f5bc29da" Title="ModPage Properties" Url="html/f9daee0c-f546-2494-3150-612db927f802.htm">
+        <HelpTOCNode Title="count Property " Url="html/c69cc012-3429-3680-2cf0-9b0621907054.htm" />
+        <HelpTOCNode Title="page Property " Url="html/91f37ea8-2c25-228e-0fe4-6c930414d34c.htm" />
+        <HelpTOCNode Title="pages Property " Url="html/b4c534a6-14d5-9354-fdb2-aa6880a3105a.htm" />
+        <HelpTOCNode Title="result Property " Url="html/7e39458b-6fcd-5af2-be7e-60be7a175e5b.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5e8e9f1b-d783-48f4-8785-5fc0c5e5e2f8" Title="VersionInfo Class" Url="html/7d720469-310c-b86e-0297-f10637e3da78.htm">
+      <HelpTOCNode Title="VersionInfo Constructor " Url="html/ae0c4622-6aa6-ab90-d18c-6748d07c166e.htm" />
+      <HelpTOCNode Id="78167e60-3769-4542-b9b7-a770f70069c1" Title="VersionInfo Methods" Url="html/63e8843b-0784-9301-1b25-5dc3d36e45e4.htm">
+        <HelpTOCNode Title="FromFile Method " Url="html/1bb52fef-e5d2-ab51-3035-972f47249fd2.htm" />
+        <HelpTOCNode Title="get_version_info_from_api Method " Url="html/1f5897ed-7f9a-1c40-5f1f-34fde3690d6f.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="bb908166-186b-4bae-b33f-4e4bb445c84c" Title="VersionInfo Properties" Url="html/e9177ca5-0f70-7b10-1001-ffc1ce8d0e09.htm">
+        <HelpTOCNode Title="version Property " Url="html/12064e81-c3c7-4eed-3f0b-a875d152e24f.htm" />
+        <HelpTOCNode Title="version_path Property " Url="html/cde867e5-7f6f-22a6-3bb4-6f45605266dc.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="6667666f-5df5-43d2-9ba1-84ee87769ee9" Title="ModulousMM" Url="html/d6c134e6-2e89-a9d3-34f3-e2f29c17c9ba.htm">
+    <HelpTOCNode Id="2a162fea-e430-4f32-ac88-3934c0b2cb95" Title="TopMostMessageBox Class" Url="html/06f131df-384b-13fd-43be-229477b439c1.htm">
+      <HelpTOCNode Id="d2b8d3bf-4c29-4d7c-adec-527a404fa7aa" Title="TopMostMessageBox Methods" Url="html/26f43d44-9364-90a7-b631-7c454f355612.htm">
+        <HelpTOCNode Id="00f15390-6cb2-4d53-a99b-268e472ab487" Title="Show Method " Url="html/790fba74-a93e-affe-e94d-f6b8be761fe7.htm">
+          <HelpTOCNode Title="Show Method (String)" Url="html/a5c854cf-7932-be77-2542-f7f0c6c9d1a9.htm" />
+          <HelpTOCNode Title="Show Method (String, String)" Url="html/04288fe4-772a-c52e-322f-9feb84ce1c93.htm" />
+          <HelpTOCNode Title="Show Method (String, String, MessageBoxButtons)" Url="html/70471727-f98a-ef25-058e-79b955be5448.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

@@ -18,7 +18,7 @@
   };
 
   document.getElementById('submit').addEventListener('click', function() {
-    var a, ckan, form, kspVersion, license, name, progress, shortDescription, version, xhr, _i, _len, _ref;
+    var a, modmm, form, kspVersion, license, name, progress, shortDescription, tags, version, xhr, _i, _len, _ref;
     _ref = document.querySelectorAll('.has-error');
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       a = _ref[_i];
@@ -28,17 +28,21 @@
     valid = true;
     name = get('mod-name');
     shortDescription = get('mod-short-description');
+	tags = get('mod-short-tags')
     license = get('mod-license');
     if (license === 'Other') {
       license = get('mod-other-license');
     }
     version = get('mod-version');
     kspVersion = get('mod-ksp-version');
-    ckan = document.getElementById("ckan").checked;
+    modmm = document.getElementById("modmm").checked;
     if (name === '') {
       error('mod-name');
     }
     if (shortDescription === '') {
+      error('mod-short-description');
+    }
+	if (tags === '') {
       error('mod-short-description');
     }
     if (license === '') {
@@ -86,10 +90,11 @@
     form = new FormData();
     form.append('name', name);
     form.append('short-description', shortDescription);
+	form.append('tags', tags);
     form.append('license', license);
     form.append('version', version);
     form.append('ksp-version', kspVersion);
-    form.append('ckan', ckan);
+    form.append('modmm', modmm);
     form.append('zipball', zipFile);
     document.getElementById('submit').setAttribute('disabled', 'disabled');
     progress.querySelector('.progress-bar').style.width = '0%';

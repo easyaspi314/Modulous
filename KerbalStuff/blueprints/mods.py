@@ -178,6 +178,16 @@ def edit_mod(id, mod_name):
         return render_template("edit_mod.html", mod=mod, original=mod.user == current_user)
     else:
         short_description = request.form.get('short-description')
+        tags = request.form.get('tags')
+        other_authors = request.form.get('other-authors')
+        print(request.form.get('other-authors'))
+        tags_array = request.form.get('tags')
+        modmm = request.form.get('modmm')
+        if modmm == None:
+            modmm = False
+        else:
+            modmm = (modmm.lower() == "true" or modmm.lower() == "yes" or modmm.lower() == "on")
+        print(modmm)
         license = request.form.get('license')
         donation_link = request.form.get('donation-link')
         external_link = request.form.get('external-link')
@@ -193,6 +203,12 @@ def edit_mod(id, mod_name):
         mod.external_link = external_link
         mod.source_link = source_link
         mod.description = description
+        mod.tags = tags
+        mod.modmm = modmm
+        if other_authors == 'None' or other_authors == '':
+            mod.other_authors = None
+        else:
+            mod.other_authors = other_authors
         if background and background != '':
             mod.background = background
         try:

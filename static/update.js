@@ -62,7 +62,7 @@
       } else {
         alert = document.getElementById('error-alert');
         alert.classList.remove('hidden');
-        alert.textContent = result.reason;
+        alert.textContent = result.message;
         document.getElementById('submit').removeAttribute('disabled');
         document.querySelector('.upload-mod a').classList.remove('hidden');
         document.querySelector('.upload-mod p').classList.add('hidden');

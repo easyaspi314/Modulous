@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mod.css') }}" />
 {% endblock %}
 {% block title %}
-<title>{{ profile.username }} on Kerbal Stuff</title>
+<title>{{ profile.username }} on Modulous</title>
 {% endblock %}
 {% block body %}
 {% if profile.backgroundMedia %}
@@ -13,7 +13,7 @@
 <div class="container lead">
     <div class="row">
         <div class="col-md-10">
-            <h1 title="{{ profile.username }}">{{ profile.username }} <small>on Kerbal Stuff</small></h1>
+            <h1 title="{{ profile.username }}">{{ profile.username }} <small>on Modulous</small></h1>
         </div>
         {% if user.username == profile.username or user.admin %}
         <div class="col-md-2">
@@ -47,9 +47,9 @@
                             <div class="timeline-label">
                                 <h2>
                                     <span class="text-muted">
-                                        Forums:
+                                        Steam ID:
                                     </span>
-                                    <a target="_blank" href="http://forum.kerbalspaceprogram.com/members/{{ profile.forumId}}-{{ profile.forumUsername }}">
+                                    <a target="_blank" href="http://steamcommunity.com/id/{{ profile.forumUsername }}">
                                         {{ profile.forumUsername }}
                                     </a>
                                 </h2>

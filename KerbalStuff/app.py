@@ -6,7 +6,6 @@ from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
 from shutil import rmtree, copyfile
 from sqlalchemy import desc
-from time import strftime
 
 import sys
 import os
@@ -200,7 +199,5 @@ def inject():
         'first_visit': first_visit,
         'request': request,
         'locale': locale,
-        'url_for': url_for,
-        'strftime': strftime,
-        'datetime': datetime
+        'url_for': url_for
     }

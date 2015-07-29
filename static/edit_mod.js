@@ -1,9 +1,5 @@
 (function() {
-  var a, editor, _i, _len, _ref;
-
-  editor = new Editor();
-
-  editor.render();
+  var a, _i, _len, _ref;
 
   window.upload_bg = function(files, box) {
     var file, formdata, p, progress, xhr;
@@ -73,10 +69,45 @@
     return xhr.send(data);
   }, false);
 
+  document.getElementById('add-other-author').addEventListener('click', function(e) {
+    var data, m, u, xhr;
+    e.preventDefault();
+    m = document.getElementById('other-author-error');
+    u = document.getElementById("new-other-author");
+    m.classList.add('hidden');
+    xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/mod/' + window.mod_id + '/grant_other');
+    xhr.onload = function() {
+      var b, div, response;
+      response = JSON.parse(this.responseText);
+      if (response.error) {
+        m.textContent = response.message;
+        return m.classList.remove('hidden');
+      } else {
+        div = document.createElement('div');
+        div.className = 'col-md-6';
+        div.textContent = u.value;
+        b = document.getElementById('beforeme');
+        b.parentElement.insertBefore(div, b);
+        return u.value = '';
+      }
+    };
+    data = new FormData();
+    data.append('user', u.value);
+    return xhr.send(data);
+  }, false);
+
   document.getElementById('new-shared-author').addEventListener('keypress', function(e) {
     if (e.keyCode === 13) {
       e.preventDefault();
       return document.getElementById('add-shared-author').click();
+    }
+  }, false);
+
+  document.getElementById('new-other-author').addEventListener('keypress', function(e) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      return document.getElementById('add-other-author').click();
     }
   }, false);
 

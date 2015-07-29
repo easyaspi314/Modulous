@@ -55,9 +55,12 @@ def search_mods(text, page, limit):
     terms = text.split(' ')
     query = db.query(Mod).join(Mod.user).join(Mod.versions)
     filters = list()
+    filtering_by_game = False
+    game_filtering_by = ""
     for term in terms:
-        if term.startswith("ksp:"):
-            filters.append(Mod.versions.any(ModVersion.ksp_version == term[4:]))
+        if term.startswith("game:"):
+            filtering_by_game = True 
+            game_filtering_by = term[5:]
         elif term.startswith("user:"):
             filters.append(User.username == term[5:])
         elif term.startswith("downloads:>"):
@@ -68,11 +71,18 @@ def search_mods(text, page, limit):
             filters.append(Mod.follower_count > int(term[11:]))
         elif term.startswith("followers:<"):
             filters.append(Mod.follower_count < int(term[11:]))
+        elif term.startswith("tag:"):
+            filters.append(Mod.tags.ilike('% ' + term[5:] + ' %'))
+            filters.append(Mod.tags.ilike('%' + term[5:]))
+            filters.append(Mod.tags.ilike(term[5:] + ' %'))
+            filters.append(Mod.tags.startswith(term[5:]))
         else:
             filters.append(Mod.name.ilike('%' + term + '%'))
             filters.append(User.username.ilike('%' + term + '%'))
             filters.append(Mod.short_description.ilike('%' + term + '%'))
     query = query.filter(or_(*filters))
+    if filtering_by_game == True:
+            query = query.filter(Mod.versions.any(ModVersion.ksp_version == game_filtering_by))
     query = query.filter(Mod.published == True)
     query = query.order_by(desc(Mod.follower_count)) # We'll do a more sophisticated narrowing down of this in a moment
     total = math.ceil(query.count() / limit)
