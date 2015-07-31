@@ -72,10 +72,10 @@ def search_mods(text, page, limit):
         elif term.startswith("followers:<"):
             filters.append(Mod.follower_count < int(term[11:]))
         elif term.startswith("tag:"):
-            filters.append(Mod.tags.ilike('% ' + term[5:] + ' %'))
-            filters.append(Mod.tags.ilike('%' + term[5:]))
-            filters.append(Mod.tags.ilike(term[5:] + ' %'))
-            filters.append(Mod.tags.startswith(term[5:]))
+            filters.append(Mod.tags.ilike('% ' + term[4:] + ' %'))
+            filters.append(Mod.tags.ilike(term[4:] + ' %'))
+            filters.append(Mod.tags.ilike(term[4:]))
+            filters.append(Mod.tags.ilike('% ' + term[4:]))
         else:
             filters.append(Mod.name.ilike('%' + term + '%'))
             filters.append(User.username.ilike('%' + term + '%'))
