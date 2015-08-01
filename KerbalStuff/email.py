@@ -140,10 +140,3 @@ def send_autoupdate_notification(mod):
 def send_bulk_email(users, subject, body):
     if _cfg("smtp-host") == "":
         return
-    targets = list()
-    for u in users:
-def send_bulk_email(users, subject, body):
-    targets = list()
-    for u in users:
-        targets.append(u)
-    send_mail.delay("eirexe123@gmail.com", targets, subject, body)
