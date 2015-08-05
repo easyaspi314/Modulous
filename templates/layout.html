@@ -10,7 +10,10 @@
         {% block title %}
         <title>Modulous</title>
         {% endblock %}
-        {% if user.dark_theme == False or not user %}
+        {% if user.dark_theme == False %}
+        <link href="/static/bootstrap.min.css" rel="stylesheet">
+        {% endif %}
+        {% if not user %}
         <link href="/static/bootstrap.min.css" rel="stylesheet">
         {% endif %}
         {% block styles %}
