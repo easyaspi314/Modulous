@@ -1,6 +1,7 @@
 (function() {
   var a, _i, _len, _ref;
-
+  editor = new Editor();
+  editor.render();
   window.upload_bg = function(files, box) {
     var file, formdata, p, progress, xhr;
     file = files[0];
