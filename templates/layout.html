@@ -10,7 +10,22 @@
         {% block title %}
         <title>Modulous</title>
         {% endblock %}
+
+        {% block styles %}
+        {% if user.dark_theme == True %}
+        {{ super() }}
+        <link href="/static/bootstrap_dark.min.css" rel="stylesheet">
+        {% else %}
         <link href="/static/bootstrap.min.css" rel="stylesheet">
+        {{ super() }}
+        {% endif %}
+        {% if user.dark_theme == false or not user %}
+        <link href="/static/bootstrap.min.css" rel="stylesheet">
+        {{ super() }}
+        {% endif %}
+        {% endblock %}
+
+
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -37,8 +52,10 @@
             })();
         </script>
         <!-- End Project Wonderful Ad Box Loader -->
-        {% block styles %}{% endblock %}
+
     </head>
+
+
     <body class="{% if user %}logged-in{% endif %}">
                         <div id="fuckadblock" style="background: red; color: white; position: fixed; z-index: 9999; bottom: 0; height: 30px; left: 0; right: 0; text-align: center; padding: 5px; display: none;">
                         You seem to be using AdBlock or have javascript disabled, Modulous is not a cheap site to maintain, so please, consider disabling it, you can do it for this domain only.
