@@ -48,6 +48,7 @@ def profile(username):
         profile.backgroundMedia = request.form.get('backgroundMedia')
         bgOffsetX = request.form.get('bg-offset-x')
         bgOffsetY = request.form.get('bg-offset-y')
+        dark_theme = request.form.get('dark_theme')
         if bgOffsetX:
             profile.bgOffsetX = int(bgOffsetX)
         if bgOffsetY:
