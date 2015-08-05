@@ -8,17 +8,17 @@
         <meta property="og:image" content="/static/logo.png" />
 
         {% block title %}
-        <title>{{ user.dark_theme }}</title>
+        <title>Modulous</title>
         {% endblock %}
-
+        {% if user.dark_theme == False or not user %}
+        <link href="/static/bootstrap.min.css" rel="stylesheet">
+        {% endif %}
         {% block styles %}
-        {% if user.dark_theme == True %}
-        {{ super() }}
-        <link href="/static/bootstrap_dark.min.css" rel="stylesheet">
-        {% endif %} 
+
         {% endblock %}
-
-
+        {% if user.dark_theme == True %}
+        <link href="/static/bootstrap_dark.min.css" rel="stylesheet">
+        {% endif %}
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
