@@ -320,7 +320,6 @@ window.thirty_days_ago = new Date({{ thirty_days_ago | tojson }});
         <a data-toggle="tab" href="#info" class="btn btn-primary">Information</a>
         <a data-toggle="tab" href="#changelog" class="btn btn-warning">Changelog</a>
         <a data-toggle="tab" href="#stats" class="btn btn-info">Stats</a>
-		<a data-toggle="tab" href="#comments" class="btn btn-primary">Comments</a>
     </div>
 </div>
 
@@ -328,29 +327,6 @@ window.thirty_days_ago = new Date({{ thirty_days_ago | tojson }});
     <div class="tab-content">
         <div class="tab-pane active" id="info">
             {{ mod.description | markdown }}
-        </div>
-		<div class="tab-pane" id="comments">
-			<div id="disqus_thread"></div>
-			<script type="text/javascript">
-				/* * * CONFIGURATION VARIABLES * * */
-				disqus_config = function() {
-					this.callbacks.onReady = [function() {
-					$('#disqus_thread iframe').css({
-					'	height': '327px',
-						'height': 'auto !important',
-						'min-height': '327px'
-							});
-					}];
-				};
-				var disqus_shortname = 'modulous';
-    
-				/* * * DON'T EDIT BELOW THIS LINE * * */
-				(function() {
-				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-				})();
-			</script>
         </div>
         <div class="tab-pane" id="changelog">
             <div class="timeline-centered">
