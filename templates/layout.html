@@ -15,14 +15,7 @@
         {% if user.dark_theme == True %}
         {{ super() }}
         <link href="/static/bootstrap_dark.min.css" rel="stylesheet">
-        {% else %}
-        <link href="/static/bootstrap.min.css" rel="stylesheet">
-        {{ super() }}
-        {% endif %}
-        {% if user.dark_theme == false or not user %}
-        <link href="/static/bootstrap.min.css" rel="stylesheet">
-        {{ super() }}
-        {% endif %}
+        {% endif %} 
         {% endblock %}
 
 
