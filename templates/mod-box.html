@@ -1,4 +1,7 @@
 <div class="item col-md-4">
+    {% if user.dark_theme %}
+    <link href="/static/bootstrap_dark.min.css" rel="stylesheet">
+    {% endif %}
     <div class="thumbnail">
         <div class="ksp-update">Super Smash Bros {{ mod.default_version().ksp_version }}</div>
         {% if following_mod(mod) %}
