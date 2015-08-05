@@ -107,8 +107,9 @@ window.username = "{{profile.username}}";
                             </div>
                         </div>
                     </div>
+                    <input type="checkbox" id="dark_theme" name="dark_theme" style="margin-top: 8px;" {{ "checked" if current_user.dark_theme else ""}} > Enable dark theme
                 </div>
-                <input type="checkbox" id="dark_theme" name="dark_theme" style="margin-top: 8px;" {{ "checked" if current_user.dark_theme else ""}} > Enable dark theme
+
                 <div class="col-md-6">
                     <h3 style="margin: 0; padding: 0; padding-bottom: 5px;">Your description <small><a href="/markdown">Markdown</a> supported</small></h3>
                     <textarea name="description"
