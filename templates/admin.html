@@ -3,6 +3,12 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}" />
 {% endblock %}
 {% block body %}
+{% block scripts %}
+<script type="text/javascript">
+editor = new Editor()
+editor.render()
+</script>
+{% endblock %}
 <div class="well">
     <div class="container">
         <h1>Admin Stuff</h1>
@@ -74,8 +80,5 @@
         </div>
     </form>
 </div>
-<script>
-editor = new Editor()
-editor.render()
-</script>
+
 {% endblock %}
