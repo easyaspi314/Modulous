@@ -206,7 +206,7 @@ def edit_mod(id, mod_name):
         mod.description = description
         mod.tags = tags
         mod.modmm = modmm
-        mod.nsfw nsfw
+        mod.nsfw = nsfw
         if other_authors == 'None' or other_authors == '':
             mod.other_authors = None
         else:
