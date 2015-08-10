@@ -1,0 +1,75 @@
+#right_half {
+    filter: grayscale(100%) blur(3px); /* Chrome 19+ & Safari 6+ */
+    -webkit-filter: grayscale(100%) blur(3px); /* Chrome 19+ & Safari 6+ */
+    transition: all .6s ease; /* Fade to color for Chrome and Safari */
+    -webkit-ransition: all .6s ease; /* Fade to color for Chrome and Safari */
+    backface-visibility: hidden; /* Fix for transition flickering */
+    -webkit-backface-visibility: hidden; /* Fix for transition flickering */
+    background: url(sf.png);
+    position: absolute;
+    right: 0px;
+    width: 50%;
+    height: 100%;
+    margin: -8px -8px -18px -8px;
+}
+#left_half {
+    filter: grayscale(100%) blur(3px); /* Chrome 19+ & Safari 6+ */
+    -webkit-filter: grayscale(100%) blur(3px); /* Chrome 19+ & Safari 6+ */
+    transition: all .6s ease; /* Fade to color for Chrome and Safari */
+    -webkit-ransition: all .6s ease; /* Fade to color for Chrome and Safari */
+    backface-visibility: hidden; /* Fix for transition flickering */
+    -webkit-backface-visibility: hidden; /* Fix for transition flickering */
+    background: url(sf.png);
+    position: absolute;
+    left: 0px;
+    width: 53%;
+    height: 100%;
+    margin: -8px -8px -8px 0px;
+}
+div {
+    margin: 20px;
+    overflow: hidden;
+}
+img.left_half {
+    
+    filter: grayscale(100%) blur(3px); /* Chrome 19+ & Safari 6+ */
+    -webkit-filter: grayscale(100%) blur(3px); /* Chrome 19+ & Safari 6+ */
+    transition: all .6s ease; /* Fade to color for Chrome and Safari */
+    -webkit-ransition: all .6s ease; /* Fade to color for Chrome and Safari */
+    backface-visibility: hidden; /* Fix for transition flickering */
+    -webkit-backface-visibility: hidden; /* Fix for transition flickering */
+    position: absolute;
+    left: 0%;
+    height:100%;
+}
+#rightHalf {
+   background: url(images/bg-2.jpg);
+
+}
+#right_half:hover {
+    filter: none;
+    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%);
+}
+#left_half:hover {
+    filter: none;
+    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%);
+}
+img.left_half:hover {
+    filter: none;
+    filter: grayscale(0%);
+}
+svg {
+    background:url(http://4.bp.blogspot.com/-IzPWLqY4gJ0/T01CPzNb1KI/AAAAAAAACgA/_8uyj68QhFE/s400/a2cf7051-5952-4b39-aca3-4481976cb242.jpg);
+}
+
+svg image {
+    transition: all .6s ease;
+}
+
+svg image:hover {
+    opacity: 0;
+}
+
+

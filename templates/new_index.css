@@ -1,0 +1,574 @@
+/* Inactive style for Voat v1.3 - https://voat.co/v/Inactive */
+
+/* Restore light style */
+@import url(/Content/Light?1);
+
+/* Rounded borders on Windows 98? Not this time */
+* {
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+
+/* Windows 98 scrollbars */
+::-webkit-scrollbar {
+	width: 14px;
+	height: 14px;
+}
+
+::-webkit-scrollbar-button:vertical {
+	height: 16px;
+}
+
+::-webkit-scrollbar-button:horizontal {
+	width: 16px;
+}
+
+::-webkit-scrollbar-track {
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGklEQVQI1wXBAQEAAAgCIPu/Sa8RHGxL2oIHdxANamBVcRwAAAAASUVORK5CYII=);
+}
+
+::-webkit-scrollbar-button, ::-webkit-scrollbar-thumb {
+	border: 1px solid #fff;
+	border-right: 1px solid #404040;
+	border-bottom: 1px solid #404040;
+	background: #bdbdbd;
+	background-size: 100% 100%;
+}
+
+::-webkit-scrollbar-corner {
+	background: #bdbdbd;
+}
+
+::-webkit-resizer {
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAABoUlEQVQoz53RXWvTYADF8f/zJE1NsyV29DW1bWAjurVpYyYt+IH8LH4HtS1uRfEFVJxsboJMsQrDFnfjqs4bZVvvndDhHi9EvJm67dz/4ByOeN57zWkiT4PihoF+EiCE4Ew8znSppI4NpRRMJCzcdEZ1Ot3jVdWkJGnbV52EpdqdLkLK/0NN00hNJdXh+Mfa3XsPMRMmzcuNf2/UdZ1cKqVGO3usv+yt2mdt5hsRM+Xy32FM1ylkc2q4NaTf3ySdTRNGdc5lsrTbi0dDIxajXCioN70NPn7axi26hGEVK27Sai9iHHWHYcSYKZXV8vIau3sjvGmPIJjl4PuYO48eYCZMLjXn/8DfH/mep27dvs+3/X38WZ/q3AVGuyPWX7zCdmyiZoTveb+gEIJJy6KQyahr128ipaRSr1A577P1/gP9/jvSmTRhVKOYy9NqLSCllCQd54qTmFCtdhepSS42QsLqHG83BgwGm7hFl0YzYmrS5kZrAYRADLc/q8PxAUtPVtF0jSAKiIIqKyvP+Pplh3wxT1ivoinB46WnSE1Si2r8BF63dDTf5s/tAAAAAElFTkSuQmCC);
+	background-size: 14px 14px;
+	width: 14px;
+	height: 14px;
+}
+
+::-webkit-scrollbar-button:active {
+	border: 1px solid #404040;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+}
+
+::-webkit-scrollbar-button:vertical:decrement {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAN0lEQVQoz2Pcu3fvfwYSABMDiYB6GpydnYnXAFOMTRMTIZPR+UzEOANZnAVZYu/evYM5WKmmAQCTKgsGB18TfwAAAABJRU5ErkJggg==);
+}
+
+::-webkit-scrollbar-button:vertical:increment {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAO0lEQVQoz2Pcu3fvfwYSABMDiWAQamBB5jg7O+NUuHfvXkwbYIK4FGN1EromdD4TPhOx2chEyM30D1YAgMoV0RgpS1cAAAAASUVORK5CYII=);
+}
+
+::-webkit-scrollbar-button:horizontal:decrement {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAP0lEQVQoz2Pcu3fvfwYSABMDiQCnBmdnZ+I14FKMVQM+xRgaCCnG0LB3717SPU1IE1ZP49OEM1hxaaJexOECAEQnD06/vj5uAAAAAElFTkSuQmCC);
+}
+
+::-webkit-scrollbar-button:horizontal:increment {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAP0lEQVQoz2Pcu3fvfwYSABMDiQCrBmdnZ9JtwKUJr5OwaSLoB3RNBDXs3buXeA3oivFqwKYYpwZciqkXcfgAAOQYD07vRrMxAAAAAElFTkSuQmCC);
+}
+
+/* Hide the VOAT logo [...] */
+#header-img {
+	display: none;
+}
+
+/* [...] and replace it with our custom logo
+ * Thanks https://voat.co/user/G4 for the idea
+ */
+#header-img-a:after {
+	content: "";
+	display: block;
+	background: url(data:image/png;base64,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);
+	width: 112px;
+	height: 31px;
+	margin: 7px 12px 10px;
+}
+
+/* Realign the logo */
+#header-img-a {
+	vertical-align: unset;
+}
+
+/* Use our retro spritesheet for upvoats, downvoats, messages, etc.
+ * Thanks https://voat.co/user/HeadHunter for the idea
+ */
+.arrow-downvote,
+.arrow-downvoted,
+.arrow-upvote,
+.arrow-upvoted,
+.comment .arrow-downvote,
+.comment .arrow-downvoted,
+.comment .arrow-upvote,
+.comment .arrow-upvoted,
+#manage,
+#mail.nohavemail,
+#mail.havemail,
+#nightmodetoggle,
+.expando-button.selftext.collapsed,
+.expando-button.selftext.expanded,
+.expando-button.selftext.loading,
+.expando-button.selftext.collapsed:hover,
+.expando-button.selftext.expanded:hover,
+.expando-button.selftext.loading:hover {
+	background-image: url(data:image/png;base64,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);
+}
+
+/* If night mode is on, turn the light icon off */
+.dark #nightmodetoggle {
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAQCAYAAAAvf+5AAAAABmJLR0QA/wD/AP+gvaeTAAAA9klEQVQoz3WRQcqDMBBGXzoBBVdKF0VEoScoeBihR+rdCrlC9yELYUDB0C5+FOPffqsJebyZTAy7eO/f+/P5fDZrbVZARLDWsiwLADFGVBURoWkaYwFEhDzPOcJFUaCqf0bv/TvLMrIs20wA0zQxjiMAqspJRBLgW5xz2COwn3G1iQhWRBLbCh5zKsvSqCoxRuZ5JsbIOI7bI5xzDMNgtj29Xq9kh6qKc477/W4A7LHF3pS0Xouu60xRFMnlavtnfDwehBCoqooQwncjwPV65Xa7AVBV1W/wcrnQNA0AbdsmYNK6ruufv5OAMUaezydt29L3fQJ+AGiSdCHjxc/rAAAAAElFTkSuQmCC);
+}
+
+/* Green background color, old style font
+ * Thanks https://voat.co/user/V-sync 
+ * and https://voat.co/user/j_ for the font idea
+ */
+body, #container, .modal {
+	background: #008080;
+	font-family: 'Verdana', sans-serif;
+	-webkit-font-smoothing : none !important;
+	font-smooth: never !important;
+}
+
+/* Windows 98 arrow cursor */
+body, #container, .modal,
+label, [type="checkbox"] {
+	cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAATCAYAAABGKffQAAAABmJLR0QA/wD/AP+gvaeTAAAAcElEQVQoz5WSUQrAMAhDk7D7Xzn7WUGsts6vVvKUqARg28QgBAAkPRbbHgFajwmg+LkByokToCrZAepaVoBOhjKg27giwG+Dm4jcl/pkQQTzGSgJuSq2BpdwehuMrbvqmp7naYNldeFHsJpxmJCjpxemxFQXOQqqJwAAAABJRU5ErkJggg==), auto;
+}
+
+/* Windows 98 text cursor */
+[type="text"],
+[type="password"] {
+	color: #000;
+	background: #fff;
+	cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAQCAYAAADagWXwAAAABmJLR0QA/wD/AP+gvaeTAAAAL0lEQVQY0+2RoQ0AMAzDnP3/s0tWaahsrJECHMMA2FV5OXcAIIlqmg9DVv6TTJcV4VwZB7onz7wAAAAASUVORK5CYII=), auto !important;
+}
+
+/* Windows 98 help cursor */
+#header .userkarma,
+#header .upvoatsGiven,
+#container .word {
+	cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAATCAYAAAB/TkaLAAAABmJLR0QA/wD/AP+gvaeTAAAAnklEQVQ4y62TURKAIAhEd5nuf+XtJxrHAE3tM4yej4UAJIk4+BgAkNTJpnxIQRIzxBWAf2/NiyFxW5fEHsLrL2lTCIn7hhW9BVfYdmyJm63GVkhfaiyJH6eByzIVkWub+HNKnA0vJSWZ5nCUhiu4KrLDvwfl7pxwJwHXzDCqlax2/7MhrmFlw2zFW69luKZvgAu3PUg5/WNOB9uklWjdQDiTCgqOKh8AAAAASUVORK5CYII=), auto !important;
+	border-bottom: 0;
+}
+
+/* Windows 98 hand cursor */
+a, button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"],
+[class^="btn-"],
+#manage, #nightmodetoggle,
+#mail, .expando-button {
+	cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAWCAYAAAAmaHdCAAAABmJLR0QA/wD/AP+gvaeTAAAAgUlEQVQ4y9WTSw7FMAgDccT9rzxdpYpQSz68t6hXUYQmBhMBFiUJMzNAtqD2BAAMuGHbkBN9CCKJ2Wx8BunpjaCYmu/YjsAOO57JuAKe2VwF+Vvf4308p+lkhVldAySpvidVUJtZ3YJU3JT+jiQDFNM5cvOfX7zqprfyMyeevbSqC/fAUye33YsSAAAAAElFTkSuQmCC), auto !important;
+}
+
+/* Disable custom cursor until this bug is fixed: https://code.google.com/p/chromium/issues/detail?id=290466 */
+textarea {
+	cursor: auto !important;
+}
+
+/* Prevent modal windows from obscuring content behind them */
+.modal {
+	background: transparent;
+}
+
+/* Make links and footer text readable on green background */
+.footer p, .footer a {
+	color: #fff;
+}
+
+/* Underline links on footer to make them different thank the text */
+.footer a {
+	text-decoration: underline;
+}
+
+/* Remove that blue glow the header has when focused */
+#header:focus {
+	outline: none;
+}
+
+/* We don't need a border around the main container */
+#container {
+	border: 0;
+}
+
+/* Add a black border the subscription menu,
+ * we are trying to imitate a typical Windows
+ * combobox
+ */
+#header > #sr-header-area .whoaSubscriptionMenu.hover ul {
+	border: 1px solid #000;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+/* Selected items in comboboxes have a dotted border */
+#header > #sr-header-area .whoaSubscriptionMenu.hover ul li > a {
+	border: 1px dotted #fff;
+}
+
+/* Add a blue background a white font when you hover over
+ * an item in a combobox 
+ */
+#header > #sr-header-area .whoaSubscriptionMenu.hover ul li > a:hover {
+	color: #fff !important;
+	background: #000080 !important;
+}
+
+/* A typical Windows checkbox, tested on Chrome and Firefox,
+ * does not work on Firefox for PC but works on Firefox
+ * for Android
+ */
+[type="checkbox"]:after {
+	content: "";
+	display: block;
+	width: 1.1em;
+	height: 1.1em;
+	border: 1px solid #000;
+	background: #fff;
+	font-weight: bold;
+}
+
+/* Add a check mark to checked checkboxes */
+[type="checkbox"]:checked:after {
+	content: "\2713";
+}
+
+/* Standard gray window with almost white and black borders */
+#header > div, #container > .content,
+#container > .side,
+#container .submission,
+.dark #container .submission,
+#container > .side .content,
+#container > .side .spacer,
+#container > .well,
+.modal .modal-header,
+.modal .modal-body,
+.modal .modal-footer,
+#container .alert-featuredsub,
+#container .thread,
+#container .comment {
+	color: #000;
+	background: #c0c0c0;
+	border: 1px solid #dfdfdf;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+/* Remove the white border between the titlebar and the
+ * content of a modal window, it looks ugly
+ */
+.modal .modal-body,
+.modal .modal-footer {
+	border-top: 0;
+}
+
+/* Add a little padding to windows, it makes the border look
+ * a little more thick
+ */
+#container > .content,
+#container > .side,
+#container > .well {
+	padding: 1px 2px;
+}
+
+/* This is where half of the magic happens,
+ * reserve some space for the titlebars
+ */
+#container > .content:before,
+#container > .side:before,
+#container > .well:before {
+	content: "";
+	color: #fff;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 16px;
+	padding-left: 4px;
+	display: block;
+	height: 16px;
+	margin: 1px 0;
+}
+
+/* Add a blue to almost white gradient to the titlebars */
+#container > .content:before,
+#container > .side:before,
+#container > .well:before,
+.modal .modal-header {
+	background: #000080;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000080', endColorstr='#1084d0', GradientType=1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#000080', endColorstr='#1084d0', GradientType=1)";
+	background: -webkit-gradient(linear, left top, right top, from(#000080), to(#1084d0));
+	background: -webkit-linear-gradient(left, #000080, #1084d0);
+	background: -moz-linear-gradient(left, #000080, #1084d0);
+	background: -o-linear-gradient(left, #000080, #1084d0);
+	background: linear-gradient(to right, #000080, #1084d0);
+}
+
+/* A little margin for the submission text */
+#container .submission {
+	margin: 4px 2px;
+}
+
+/* Make labels look like standard Windows labels,
+ * remove those annoying shadows
+ */
+.modal label.control-label {
+	color: #000;
+	background: transparent;
+	text-shadow: none;
+	border-bottom: 0;
+}
+
+/* Make links ugly blue like in Windows */
+#header a,
+#sr-header-area .sr-list a,
+#container a,
+.modal a,
+.alert a {
+	color: #00f;
+	text-decoration: underline;
+}
+
+/* Make your subverse name bold */
+#header .pagename {
+	font-weight: bold;
+}
+
+/* Make almost any text inside the main container black,
+ * exceptions are links and the titlebar text
+ */
+#container * {
+	color: #000;
+}
+
+/* Make the titlebar text white */
+#container .modal .modal-header .modal-title {
+	color: #fff;
+}
+
+/* Old style buttons */
+#header .tabmenu li a,
+#container [class^="btn-"],
+.alert [class^="btn-"],
+.modal [class^="btn-"],
+.modal button,
+#container button,
+#container input[type="submit"],
+#container input[type="button"],
+#container .pagination-container .btn-whoaverse-paging a {
+	color: #000 !important;
+	border: 1px solid #fff;
+	border-right: 1px solid #808080;
+	border-bottom: 1px solid #808080;
+	background: #bdbebd;
+	text-decoration: none;
+	min-width: 24px;
+	filter: alpha(opacity=100) !important;
+	opacity: 1 !important;
+}
+
+/* Make the selected hot/new/top button bold */
+#header .tabmenu li.selected a {
+	font-weight: bold;
+}
+
+/* Style for pressed buttons */
+#header .tabmenu li a:active,
+#container [class^="btn-"]:active,
+.alert [class^="btn-"]:active,
+.modal [class^="btn-"]:active,
+.modal button:active,
+#container button:active,
+#container input[type="submit"]:active,
+#container input[type="button"]:active {
+	border: 1px solid #808080;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+}
+
+/* Make inputs look like Windows inputs */
+.modal input.form-control[type="text"],
+.modal input.form-control[type="password"],
+.modal input.form-control[type="text"]:focus,
+.modal input.form-control[type="password"]:focus,
+#container input[type="text"],
+#container textarea {
+	color: #000;
+	background: #fff;
+	border: 1px solid #000;
+}
+
+/* Make number of upvoats blue [...] */
+#container .entry .tagline .post_upvotes {
+	color: #00f;
+}
+
+/* [...] and number of downvoats red */
+#container .entry .tagline .post_downvotes {
+	color: #f00;
+}
+
+/* Style for the "sticky" text next to sticky posts */
+#container .entry .title .promoted,
+#container .entry .title .featuredsub {
+	background: #ffffcc;
+	border: 1px solid #000;
+	-webkit-border-radius: 5px !important;
+	-moz-border-radius: 5px !important;
+	border-radius: 5px !important;
+	padding: 3px 2px;
+}
+
+/* If we have a big screen, let's show a nice start menu,
+ * thanks https://voat.co/user/miro for the idea
+ */
+@media (min-width: 950px) and (min-height: 510px) {
+	/* Move the header to the bottom and make it
+	 * 8em high (this is important)
+	 */
+	#header {
+		position: fixed;
+		width: 100%;
+		height: 8em;
+		bottom: 0;
+		margin-bottom: 0;
+	}
+
+	/* Move logo, hot/new/top and user data to the bottom of the header,
+	 * reserve 2.5em for the start menu
+	 */
+	#header #header-container {
+		top: 2.5em;
+		height: 5.5em;
+	}
+
+	/* Reserve 8em below the footer for the start menu */
+	.footer-container {
+		margin-bottom: 8em;
+	}
+
+	/* Hide the arrow next to "my subverses" */
+	#header > #sr-header-area .whoaSubscriptionMenu.hover > li > .drop-arrow {
+		display: none;
+	}
+
+	/* Make "my subverses" look like a button (the start menu button) */
+	#header > #sr-header-area .whoaSubscriptionMenu.hover > li {
+		color: black;
+		font-weight: bold;
+		border: 1px solid #fff;
+		border-right: 1px solid #808080;
+		border-bottom: 1px solid #808080;
+		background: #bdbebd;
+		text-decoration: none;
+		min-width: 28px;
+		filter: alpha(opacity=100) !important;
+		opacity: 1 !important;
+		padding: 0 0.5em;
+		height: 2.25em;
+		line-height: 2.25em;
+	}
+
+	/* Add a Windows logo to the start menu */
+	#header > #sr-header-area .whoaSubscriptionMenu.hover > li:before {
+		content: "";
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAANCAYAAACgu+4kAAAABmJLR0QA/wD/AP+gvaeTAAAAiklEQVQoz41SSRKAIAxLGF+m78avxYMDxoLFXFjaNA2FkrACyVdSPSt7LCsQiRH1rCQASWJGFgBOD0CJBJKK5AF2WVx91fLUpgAhsRA6HmwUY6iv1gmnsv4Grv5p4bmOQ+M9BCRT0Eu2FSCHKUBtbfs/KK7+TXSXY2T5kTJsTpDEGdH/PgAc+9FzLgQESJGC21IqAAAAAElFTkSuQmCC);
+		background-size: 100% 100%;
+		display: inline-block;
+		height: 1.45em;
+		width: 2em;
+		margin-top: 0.25em;
+		margin-right: 0.5em;
+		float: left;
+	}
+
+	/* Make start menu items gray [...] */
+	#header > #sr-header-area .whoaSubscriptionMenu.hover > li a {
+		color: black;
+		background: #bdbebd;
+		border: 0;
+		text-decoration: none;
+		text-transform: capitalize;
+	}
+
+	/* [...] and blue when the mouse is over them */
+	#header > #sr-header-area .whoaSubscriptionMenu.hover > li:hover {
+		border: 1px solid #808080;
+		border-right: 1px solid #fff;
+		border-bottom: 1px solid #fff;
+	}
+
+	/* Make the bar where the start menu and subverses
+	 * list is 2.5em height and it's background gray
+	 */
+	#header > #sr-header-area .sr-list {
+		margin-left: 0;
+		height: 2.5em;
+		background: #c0c0c0;
+	}
+
+	/* Add a "Voat98" text at the left of the start menu,
+	 * make it 335px high (like Windows 98 at 640x480 resolution)
+	 * reserve a few pixels to the left to show the
+	 * green background (yes, Windows does the same),
+	 * add a 20px padding for the "Voat98" image so it does not
+	 * end behind the subverses list, hide the horizontal scrollbar
+	 * and make the vertical scrollbar appear if there is no
+	 * enough space for the subverses list
+	 */
+	#header > #sr-header-area .whoaSubscriptionMenu.hover > li > ul {
+		top: -335px;
+		width: 28em;
+		height: 335px !important;
+		padding-left: 20px;
+		left: 0.2em;
+		overflow: auto;
+		overflow-x: hidden;
+		border: 1px solid #fff;
+		border-right: 1px solid #808080;
+		border-bottom: 1px solid #808080;
+		background: #c0c0c0;
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAFQCAYAAABQ9TX9AAAIEUlEQVR42u2ca2xVVRbH12mvpQQipNg0lj7wMWlFg/HVRMViCnwYg6lMiFqLJsVYYhUJCqHJvbUCt52hOnSU0RGxX5wYwhBBHJuiU0oppC+rtEqJgcLlUUtbWm7pg17uY/3nw4H7OPec03Md5sM4ayc7Z9991vmttdfa++x99k6uQmQH3eQUR/+FJFCBClSgAhWoQAUqUIEKVKACFahABSpQgQpUoAIVqEAFKlCBClSgAhWoQAUqUIEKVKACFahABSpQgQpUoAIVqEAFKlCBClSgAhWoQAUqUIEKVKACFahABSpQgQpUoAIVqEAFKlCBClSgAhWoQAV6c6FO3XKcVUH9OoduOc6qoHFdtBFxVgWj65xhSpwRCpXQn1U6NZY4DZQ5pvS0QgRYETQOlNYIJ8X9uqaTQdNV8PXma5vltOAGY1fF4FOnSfQjnzHwqdNiwKb0qdPU+foK/499atR8IlIttUOFw0JZ7xpZDrM0FJTU1K2UnZ1MExOr6Mcf36HJST8RESUkxNOiRe/QI4/Uk9e7hJqbd1J7ezH5/bqWhjTn5u7E3r3A6dPATz/14733gMzMAIjsKC4Genuv4EY6cQLIz/+7jtVhwMzMd1FbC3g8Phw4cBKNjcCVK5N4//1mvPwyw+W6jI4OYP36OlRUAH19ozhyBMjO1roqTEthIaO39wqqq4HUVGDevHexdSvj+HFgZGQSbW2Mhx/+MChfWgoMDo6juHifsaVlZf/C6dPA4sU1wbqkJCf27esGALzyyr4IV+Xl1eDsWWDz5khLbdogAcMEFKldmBxEtIUAha5e9dLwcH6wjshBgJOYLxNRl7brhbQUFv4D588ztm07itTUPyE9nVFRcQjnz7vh8wFffHEc6ekclF+3rhZDQ4ySEjb2aUYGY//+ExgbA+rqgPr6HoyOArt3A5WVjTh3Tq1bt47x9tuMs2cvo7MTeOgh1vQATSd/7LEd2LMHOHMG6O4ewEcfAdnZ1UhMZGzcCAwMjIGZwcxwuYCXXgLi4x1hVkILVa+pqYzFi2vw6KPAzJkcvDdz5iY89RSjtFRVkJcHJCaW64y6CF9YGZ5T110fphQW1TJSlC304IMKLViwl5KT/0AJCfXk9y+hsTGi/v5d9PPPBdTdbTojRmpMS2M4HMAPPwB+P8DMCE+jo0BrK1BRcQhZWazzQgn6VM233roZVVXAtWs+HDvWh6oqYMOGOtTUAGfODKO+vgcffAA0NbkwNgYcPNiDBx5gHVeEacnPB86dc+Orr4AFC0KC06czNm1ifPwxY/78vyA9HVi/HvjlF8bnnzPmzGGNb8O02O1AXx+wbFm4kNrEJ54AWlqANWtC97ZsacCpU8Dy5ZGWRizQEhKIfL4RmpgIXywoROSk0dG/0rRpoJSUw8FoHDz4JHk8RFlZuktJdcxeuEA0Y8ZsWraMaPp0RAguWvQapaURud1PBusuXdpOV6+CZs1CxJRjC7e0oQHU0dFDq1f/jpKTQV1ddeTz/Z4yM4kKCyfo4sUZ1NT0NyJ6lYiIpk1bQ/HxRD5f1Fo20h+PP8748ktgchLB4QgAHR3AihWMuLiQT+fOBQoLgZycyMET1vlDKT0dlJurUEYG0S23EA0NEbW0fEjHjpVc93H0Ak1R1FdhmKWwMJua1cHshXKzsslNl4vhcjHuu491FVdVqf7ev58j6m1mb4V585TrUUbUl4qigOLj1fLChbovlFBevpzh86n5RrrxOzwHAqH7IyMWLLXZFNPf2vTNN1NYSsTIzWXU1ERaq01+P+PiRVUuKYmtB2rtWhWqTmzWo6/b+eXTPJgKCkCdnSCPB+ZjyDz6obx0qXH0tcly9BsaOKILAUAgwMEyANTVMfLyYuhS/f3qw3Y7g4hx7Rrj0CG1nJXFaG1lDA8z7r8/BqjHo0IXLlQfcrsZPT0c5Z6GhkioaaD6+tTrnXeq16EhorvuUmjlSpDNBrr3XrU+JyeGQH36KQf9RgTs3q0fuIGBGJqfk8M4fJixdKn60JIl+tDt22OA6uVVqxinTjE8HtW/lZWMxET+LY/9Z54B1daCBgdBXi/o0iXQt9+CCgpgtj41yhzsAUZp1y6GosQQqKIia2N/9Wo2XvRqFwytrSrU7WY8/7w6bSgKY84cJ154gTEyot5vbze0NHpeHx9XHyov159OysvV++PjhsPUqettIiJmo2g0GG0sGq+V2tsvAACGhxkrVjBmz2Yoih1JSYznnmO43aqlbW1sfS1VUmItUEVFUd+mxpYqih179piDd+zgqVd9KSkc1VdXrmTU1zOGhhheL2NwkPH114ynn/7MYImp0eL3+9HYyHj9dcbtt//Rwm6Pnvs0guEpEGAcOcJYu5aRlsaw/h2rEbzRobUpEAiguZnx5puMjIyqKfavIn7YYbOps+O2bUdx8qRxkNraGBs21OGOO0w/I/W1ZmUx3npLnUW9Xn0l33/fa7zbY7bVRgTMmrUZzz7L+OSTdnR1RSrRBMpu8avDjttuY7z4ImPnTkZnZx+8Xl8Y1K7nU30L589nbNx4AEePMvx+v27zu7t1d3vCNqpsDuTlMaqrGT09Q4aB6uzsQ1kZ4557qs33+ojshl0KAL777gJKSxl33/3nKQaAxqfavtnSokY/M7MK1oOqEfD7GU1NLrzxxj8xd67RHok9NktTUir/453emPppdJ2eDGBxS56m2En/Xz3m0FjqMDnmcFg+6DLw6a894CK9Mz6zk0inwQFjdFB/sz41kwvd+zcVFW7DxZnLTgAAAABJRU5ErkJggg==);
+	    background-repeat: no-repeat;
+    	background-position: left;
+		background-size: 20px 335px;
+	}
+
+	/* Make start menu items a little bigger */
+	#header > #sr-header-area .whoaSubscriptionMenu.hover ul li > a {
+		border: 0;
+		padding: 0.5em 0.75em;
+	}
+
+	/* Vertically center text (front, all, random, etc.) */
+	#header > #sr-header-area .sr-list > .flat-list {
+		height: 2.25em;
+		line-height: 2.25em;
+	}
+
+	/* Add a separator between the start menu button and the "front" link */
+	#header > #sr-header-area .sr-list > .flat-list:nth-child(2):before {
+		content: "";
+		display: inline-block;
+		background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAaCAYAAAB7GkaWAAAABmJLR0QA/wD/AP+gvaeTAAAAQ0lEQVQoz2Pcu28vAy7AxIAHMO3bv++/k6PTf5J1sqALwEypqavBrnPf/n1EOGhUchBKYkR2TV0N3pTASJSxjGSnWwC7/xFYfBWLVwAAAABJRU5ErkJggg==);
+		background-size: 100% 100%;
+		width: 7px;
+		height: 2.25em;
+		float: left;
+		margin-left: 1em;
+	}
+}
+
+/* You may change this if you want a different text or delete it
+ * if you don't want titles */
+
+#container > .content[role="main"]:before {
+	content: ""; /* Put your subverse name here! */
+}
+
+#container > .side:before {
+	content: "Sidebar";
+}

@@ -158,6 +158,9 @@ def browse_melee():
 @anonymous.route("/mod_manager")    
 def mod_manager():
     return render_template("modmm.html")
+@anonymous.route("/new_index")    
+def new_index():
+    return render_template("new_index.html")
 @anonymous.route("/search")
 def search():
     query = request.args.get('query')
