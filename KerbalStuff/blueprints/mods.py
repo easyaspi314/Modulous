@@ -183,6 +183,7 @@ def edit_mod(id, mod_name):
         print(request.form.get('other-authors'))
         tags_array = request.form.get('tags')
         modmm = request.form.get('modmm')
+        nsfw = request.form.get('nsfw')
         if modmm == None:
             modmm = False
         else:
@@ -205,6 +206,7 @@ def edit_mod(id, mod_name):
         mod.description = description
         mod.tags = tags
         mod.modmm = modmm
+        mod.nsfw nsfw
         if other_authors == 'None' or other_authors == '':
             mod.other_authors = None
         else:
