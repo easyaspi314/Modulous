@@ -16,7 +16,7 @@
     transition: all .5s ease-in-out;
 }
 .container-right img { 
-    -webkit-filter: grayscale(100%);
+    -webkit-filter: grayscale(100%) blur(3px);
     filter: grayscale(100%);
     width: 100%;
     -webkit-transition: all .5s ease-in-out;
