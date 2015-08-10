@@ -4,8 +4,11 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}" />
 {% endblock %}
 {% block body %}
+<div id="header">
 <div id="right_half"></div>
 <div id="left_half"></div>
+</div>
+
 {% block javascript %}
     <script type="text/javascript">
         {% include "konami.js" %}
