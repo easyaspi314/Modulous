@@ -26,7 +26,6 @@ mandrill==1.0.42
 pep8==1.4.6
 ply==3.4
 praw==2.1.17
-psycopg2==2.5.3
 py-bcrypt==0.4
 pyScss==1.2.0.post3
 pystache==0.5.4
