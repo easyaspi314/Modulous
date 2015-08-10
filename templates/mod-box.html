@@ -17,7 +17,7 @@
             
             {% if mod.nsfw %}
             {% if not user.see_nsfw or not user %}
-                background-image: url(/static/background.png);
+                background-image: url(/static/nsfw.png);
             {% else %}
                 background-image: url({{ mod.background }});
             {% endif %}
