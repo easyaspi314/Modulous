@@ -62,9 +62,9 @@ class User(Base):
     packs = relationship('ModList', order_by='ModList.created')
     following = relationship('Mod', secondary=mod_followers, backref='user.id')
     dark_theme = Column(Boolean())
+    see_nsfw = Column(Boolean())
     def set_password(self, password):
         self.password = bcrypt.hashpw(password, bcrypt.gensalt())
-
     def __init__(self, username, email, password):
         self.email = email
         self.username = username
@@ -80,6 +80,7 @@ class User(Base):
         self.bgOffsetX = 0
         self.bgOffsetY = 0
         self.dark_theme = False
+        self.see_nsfw = False
     def __repr__(self):
         return '<User %r>' % self.username
 
@@ -129,6 +130,7 @@ class Mod(Base):
     followers = relationship('User', viewonly=True, secondary=mod_followers, backref='mod.id')
     ckan = Column(Boolean)
     modmm = Column(Boolean)
+    nsfw = Column(Boolean())
     def default_version(self):
         versions = [v for v in self.versions if v.id == self.default_version_id]
         if len(versions) == 0:
@@ -143,6 +145,7 @@ class Mod(Base):
         self.votes = 0
         self.follower_count = 0
         self.download_count = 0
+        self.nsfw = False
 
     def __repr__(self):
         return '<Mod %r %r>' % (self.id, self.name)
