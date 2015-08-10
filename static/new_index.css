@@ -1,0 +1,10 @@
+.container-left {
+    overflow: hidden; 
+    width: 50%; 
+    float:left;
+}
+.container-right {
+    overflow: hidden; 
+    width: 50%; 
+    float:right;
+}
