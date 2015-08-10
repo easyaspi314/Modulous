@@ -1,0 +1,32 @@
+.container-left {
+    overflow: hidden; 
+    width: 50%; 
+    float:left;
+}
+.container-right {
+    overflow: hidden; 
+    width: 50%; 
+    float:right;
+}
+.container-left img { 
+    -webkit-filter: grayscale(100%) blur(3px);
+    filter: grayscale(100%) blur(3px);
+    width: 100%;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+.container-right img { 
+    -webkit-filter: grayscale(100%) blur(3px);
+    filter: grayscale(100%);
+    width: 100%;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+.container-left img:hover {
+    filter: none;
+    -webkit-filter: grayscale(0%) blur(0px);
+}
+.container-right img:hover {
+    filter: none;
+    -webkit-filter: grayscale(0%) blur(0px);
+}
