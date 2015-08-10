@@ -64,7 +64,7 @@
             <div class="col-md-5 form-group">
                 <select id="mod-ksp-version" class="form-control">
                     {% for v in game_versions %}
-                    <option value="{{v.friendly_version}}" {% if loop.first %}selected{% endif %}>Street Fighter {{v.friendly_version}}</option>
+                    <option value="{{v.friendly_version}}" {% if loop.first %}selected{% endif %}>{{v.friendly_version}}</option>
                     {% endfor %}
                 </select>
             </div>
