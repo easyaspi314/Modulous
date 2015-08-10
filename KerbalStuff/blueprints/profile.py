@@ -49,6 +49,7 @@ def profile(username):
         bgOffsetX = request.form.get('bg-offset-x')
         bgOffsetY = request.form.get('bg-offset-y')
         profile.dark_theme = request.form.get('dark_theme')
+        profile.see_nsfw = request.form.get('see_nsfw')
         if bgOffsetX:
             profile.bgOffsetX = int(bgOffsetX)
         if bgOffsetY:
