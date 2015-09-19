@@ -12,9 +12,6 @@ import math
 anonymous = Blueprint('anonymous', __name__, template_folder='../../templates/anonymous')
 r = praw.Reddit(user_agent="Kerbal Stuff")
 @anonymous.route("/")
-def new_index():
-    return render_template("new_index.html")
-@anonymous.route("/home")
 def index():
     featured = Featured.query.order_by(desc(Featured.created)).limit(6)[:6]
     top = search_mods("", 1, 3)[0]
