@@ -25,3 +25,24 @@ env = 'dev'
 
 _cfg = lambda k: config.get(env, k)
 _cfgi = lambda k: int(_cfg(k))
+
+class MailBans:
+    bans = list()
+    def __init__(self):
+        with open('mailbans.txt') as f:
+            self.bans = f.readlines()
+            for i, mail in enumerate(self.bans):
+                self.bans[i] = mail.replace('\n', '')
+            print(self.bans)
+                
+    def isMailBanned(self, mail):
+        splitMail = mail.split('@')
+        print(splitMail)
+        if len(splitMail)<2:
+            return False
+        elif splitMail[1].strip() in self.bans:
+                return True
+        else:
+            return False
+        
+_mailbans = MailBans()

@@ -5,7 +5,7 @@ from KerbalStuff.email import send_confirmation, send_reset
 from KerbalStuff.objects import User, Mod
 from KerbalStuff.database import db
 from KerbalStuff.common import *
-
+from KerbalStuff.config import MailBans, _mailbans
 import bcrypt
 import re
 import random
@@ -33,6 +33,8 @@ def register():
                 kwargs['emailError'] = 'Please specify a valid email address.'
             elif db.query(User).filter(User.email == email).first():
                 kwargs['emailError'] = 'A user with this email already exists.'
+            elif _mailbans.isMailBanned(email):
+                kwargs['emailError'] = 'This email host is banned, please use an alternative, this is to prevent botting, sorry.'
         if not username:
             kwargs['usernameError'] = 'Username is required.'
         else:
