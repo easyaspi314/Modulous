@@ -65,7 +65,7 @@ app.register_blueprint(lists)
 app.register_blueprint(api)
 
 
-app.debug = True
+app.debug = False
 
 toolbar = DebugToolbarExtension(app)
 try:
