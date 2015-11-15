@@ -82,12 +82,13 @@ def search_mods(text, page, limit, category=None):
             filters.append(Mod.name.ilike('%' + term + '%'))
             filters.append(User.username.ilike('%' + term + '%'))
             filters.append(Mod.short_description.ilike('%' + term + '%'))
+
+    query = query.filter(or_(*filters))
     if category != None and category != "":
         if isinstance(category, str):
-            filters.append(Mod.category.has(Category.name == category))
+                query = query.filter(Mod.category.has(Category.name == category))
         else:
-            filters.append(Mod.category.has(Category.id == category))
-    query = query.filter(or_(*filters))
+            query = query.filter(Mod.category.has(Category.id == category))
     if filtering_by_game == True:
             query = query.filter(Mod.versions.any(ModVersion.ksp_version == game_filtering_by))
     query = query.filter(Mod.published == True)
