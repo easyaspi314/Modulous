@@ -600,7 +600,6 @@ def create_list():
 
 @api.route('/api/comment/<mod_id>', methods=['POST'])
 @with_session
-@json_output
 def comment_on_mod(mod_id):
     if not current_user:
         return { 'error': True, 'reason': 'You are not logged in.' }, 401
@@ -614,7 +613,7 @@ def comment_on_mod(mod_id):
         return { 'error': True, 'reason': '500 chars max, sorry!' }, 400
     comment = Comment(current_user, mod, content)
     db.commit()
-    return { 'url': url_for("mods.mod", id=mod.id, mod_name=mod.name)  }
+    return redirect("/mod/" + mod_id)
 @api.route('/api/mod/create', methods=['POST'])
 @json_output
 def create_mod():
