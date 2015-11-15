@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='search_advanced.css') }}" />
+{% endblock %}
+{% block body %}
+<div class="container">
+    <h3>report</h3>
+
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Report</th>
+      <th>User</th>
+      <th>Mod</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for report in reports %}
+    <tr>
+      <td>{{report.reason}}</td>
+      <td><a href="/profile/{{report.user.username}}">{{report.user.username}}</a></td>
+      <td><a href="/mod/{{report.mod.id}}">{{report.mod.name}}</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, abort, request, redirect, session, Response
 from flask.ext.login import current_user
 from sqlalchemy import desc
-from KerbalStuff.objects import Featured, BlogPost, Mod
+from KerbalStuff.objects import Featured, BlogPost, Mod, Category
 from KerbalStuff.search import search_mods
 from KerbalStuff.common import *
 from KerbalStuff.config import _cfg
@@ -154,12 +154,13 @@ def browse_brawl():
 @anonymous.route("/browse/Melee")
 def browse_melee():
     return render_template("CSS/Melee.html")
-@anonymous.route("/mod_manager")    
+@anonymous.route("/mod_manager")
 def mod_manager():
     return render_template("modmm.html")
 @anonymous.route("/search")
 def search():
     query = request.args.get('query')
+    category = request.args.get('category')
     if not query:
         query = ''
     page = request.args.get('page')
@@ -167,9 +168,11 @@ def search():
         page = int(page)
     else:
         page = 1
-    mods, total_pages = search_mods(query, page, 30)
-    return render_template("browse-list.html", mods=mods, page=page, total_pages=total_pages, search=True, query=query)
-
+    mods, total_pages = search_mods(query, page, 30, category)
+    return render_template("browse-list.html", mods=mods, page=page, total_pages=total_pages, search=True, query=query, category=category)
+@anonymous.route("/search_advanced")
+def search_advanced():
+    return render_template("search_advanced.html", categories=Category.query)
 @anonymous.route("/c/")
 def c():
     s = r.get_subreddit("awwnime").get_hot(limit=212)

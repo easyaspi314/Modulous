@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='search_advanced.css') }}" />
+{% endblock %}
+{% block body %}
+<div class="container">
+    <h3>Advanced Search</h3>
+    <div class="row">
+  		<div class="col-md-12">
+        <form action="/search" method="GET"</form>
+              <div class="input-group" id="adv-search">
+                  <input type="text" id="query" name="query" class="form-control" placeholder="Search for mods" />
+                  <div class="input-group-btn">
+                      <div class="btn-group" role="group">
+                          <div class="dropdown dropdown-lg">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                              <div class="dropdown-menu modal-header" style="background: #fff" role="menu">
+                                  <form class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                      <div class="row">
+                                      <div class="col-md-2"><label>Category</label></div>
+                                      <div class="col-md-5">
+                                      <select id="category" name="category" class="form-control">
+                                        <option value="" selected>All categories</option>
+                                        {% for category in categories %}
+                                        <option value="{{category.name}}">{{category.name}}</option>
+                                        {% endfor %}
+                                      </select>
+                                    </div>
+                                      </div>
+
+                                    </div>
+                                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                  </form>
+                              </div>
+                          </div>
+                          <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </form>
+          </div>
+  	</div>
+</div>
+{% endblock %}

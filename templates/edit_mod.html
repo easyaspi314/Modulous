@@ -133,7 +133,7 @@ window.mod_id = {{ mod.id }};
     {% if original or user.admin %}
 
     <div class="well info">
-    
+
         <div class="container">
 
         		<input type="checkbox" id="modmm" name="modmm" style="margin-top: 8px;" {{ "checked" if mod.modmm else ""}} > Add mod to the <a href="http://modulous.net/mod_manager">Modulous Mod Manager</a> (requires your <a href="http://modmanager.modulous.net/html/172a92a9-3da1-4a1f-8cd5-a2468aa522ee.htm">mod to be prepared</a>)
@@ -183,13 +183,12 @@ window.mod_id = {{ mod.id }};
                 <div class="col-md-6" id="beforeme">
                     <div class="alert alert-danger hidden" id="other-author-error"></div>
                     <div class="col-md-9">
-					Make sure you
-                        <input type="text" class="form-control" name="other-authors" value="{{ mod.other_authors }}"/>
+                        <input type="text" class="form-control input-block-level" name="other-authors" value="{{ mod.other_authors }}"/>
                     </div>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 
     {% endif %}
 

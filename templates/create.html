@@ -46,6 +46,14 @@
             <input id="mod-other-license" type="text" class="form-control input-lg hidden"
                 placeholder="What license do you use?" style="margin-top: 10px;" maxLength=128 />
         </div>
+        <div class="form-group">
+            <h2>Category</h2>
+            <select id="mod-category" class="form-control input-lg">
+                {% for category in categories %}
+                <option value="{{category.name}}" {% if loop.first %}selected{% endif %}>{{category.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
 		<div class="form-group">
 			<h2>Tags (Sepearated by spaces and using _ instead of spaces):</h2>
             <input id="mod-short-tags" class="form-control input-lg" type="text" maxLength=1000 />
@@ -70,9 +78,9 @@
             </div>
             <div class="col-md-2 form-group">
                 <label>
-                    <input type="checkbox" id="modmm" name="modmm" style="margin-top: 8px;" "> Add mod to <a href="Modulous.net">Modulous Mod Manager</a> (requires a <a href="Modulous.net">configuration file</a>)
+                    <input type="checkbox" id="nsfw" name="nsfw" style="margin-top: 8px;" "> NSFW
                     <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="left"
-                        title="This makes it so that users can automate the installation of your mod. Your mod won't be added to the mod manager until you publish it."></span>
+                        title="Check this if your mod is not safe for work, this means, pornographic or extremely gore mods."></span>
                 </label>
             </div>
         </div>

@@ -1,6 +1,9 @@
 (function() {
   window.activateStats = function() {
-    var worker;
+    var worker, editor;
+    editor = new Editor();
+
+    editor.render();
     worker = new Worker("/static/statworker.js");
     worker.addEventListener('message', function(e) {
       var k, keyColor, keyText, keyUI, li, _i, _len, _ref, _results;

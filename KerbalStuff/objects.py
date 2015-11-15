@@ -1,10 +1,11 @@
 from sqlalchemy import Column, Integer, String, Unicode, Boolean, DateTime, ForeignKey, Table, UnicodeText, Text, text
 from sqlalchemy.orm import relationship, backref
 from .database import Base
-
-from datetime import datetime
+import hashlib
+from datetime import datetime, timezone
 import bcrypt
-
+import calendar
+from arrow import Arrow
 mod_followers = Table('mod_followers', Base.metadata,
     Column('mod_id', Integer, ForeignKey('mod.id')),
     Column('user_id', Integer, ForeignKey('user.id')),
@@ -59,6 +60,8 @@ class User(Base):
     bgOffsetX = Column(Integer)
     bgOffsetY = Column(Integer)
     mods = relationship('Mod', order_by='Mod.created')
+    comments = relationship('Comment', order_by='desc(Comment.created)')
+    reports = relationship('Report', order_by='desc(Report.created)')
     packs = relationship('ModList', order_by='ModList.created')
     following = relationship('Mod', secondary=mod_followers, backref='user.id')
     dark_theme = Column(Boolean())
@@ -93,7 +96,10 @@ class User(Base):
         return False
     def get_id(self):
         return self.username
-
+    def get_user_image(self):
+        mailhash = hashlib.md5()
+        mailhash.update(self.email.lower().encode('utf-8'))
+        return "http://www.gravatar.com/avatar/" +  mailhash.hexdigest() + ""
 class Mod(Base):
     __tablename__ = 'mod'
     id = Column(Integer, primary_key = True)
@@ -121,6 +127,7 @@ class Mod(Base):
     default_version_id = Column(Integer)
     versions = relationship('ModVersion', order_by="desc(ModVersion.sort_index)")
     downloads = relationship('DownloadEvent', order_by="desc(DownloadEvent.created)")
+    comments = relationship('Comment', order_by="desc(Comment.created)")
     follow_events = relationship('FollowEvent', order_by="desc(FollowEvent.created)")
     referrals = relationship('ReferralEvent', order_by="desc(ReferralEvent.created)")
     source_link = Column(String(256))
@@ -129,6 +136,10 @@ class Mod(Base):
     followers = relationship('User', viewonly=True, secondary=mod_followers, backref='mod.id')
     ckan = Column(Boolean)
     modmm = Column(Boolean)
+    nsfw = Column(Boolean)
+    category_id = Column(Integer, ForeignKey('category.id'))
+    category = relationship('Category', backref=backref('mod', order_by=id))
+    reports = relationship('Report', order_by='desc(Report.created)')
     def default_version(self):
         versions = [v for v in self.versions if v.id == self.default_version_id]
         if len(versions) == 0:
@@ -143,6 +154,7 @@ class Mod(Base):
         self.votes = 0
         self.follower_count = 0
         self.download_count = 0
+        self.nsfw = False
 
     def __repr__(self):
         return '<Mod %r %r>' % (self.id, self.name)
@@ -216,7 +228,7 @@ class DownloadEvent(Base):
     def __init__(self):
         self.downloads = 0
         self.created = datetime.now()
-    
+
     def __repr__(self):
         return '<Download Event %r>' % self.id
 
@@ -232,7 +244,7 @@ class FollowEvent(Base):
     def __init__(self):
         self.delta = 0
         self.created = datetime.now()
-    
+
     def __repr__(self):
         return '<Download Event %r>' % self.id
 
@@ -248,7 +260,7 @@ class ReferralEvent(Base):
     def __init__(self):
         self.events = 0
         self.created = datetime.now()
-    
+
     def __repr__(self):
         return '<Download Event %r>' % self.id
 
@@ -300,3 +312,57 @@ class GameVersion(Base):
 
     def __repr__(self):
         return '<Game Version %r>' % self.friendly_version
+
+class Comment(Base):
+    __tablename__ = 'comment'
+    id = Column(Integer, primary_key = True)
+    mod_id = Column(Integer, ForeignKey('mod.id'))
+    mod = relationship('Mod', backref=backref('comment', order_by=id))
+    user_id = Column(Integer, ForeignKey('user.id'))
+    user = relationship('User', backref=backref('comment', order_by=id))
+    content = Column(String(512))
+    created = Column(DateTime)
+    def __init__(self, user, mod, content):
+        self.user = user
+        self.mod = mod
+        self.content = content
+        self.created = datetime.now()
+    def get_time_humanized(self):
+        now = self.created
+        otherdate = datetime.now()
+        if otherdate:
+            dt = otherdate - now
+            offset = dt.seconds + (dt.days * 60*60*24)
+        if offset:
+            delta_s = offset % 60
+            offset /= 60
+            delta_m = offset % 60
+            offset /= 60
+            delta_h = offset % 24
+            offset /= 24
+            delta_d = offset
+        else:
+            raise ValueError("Must supply otherdate or offset (from now)")
+        if delta_h > 1:
+            return Arrow.now().replace(hours=delta_h * -1, minutes=delta_m * -1).humanize()
+        if delta_m > 1:
+            return Arrow.now().replace(seconds=delta_s * -1, minutes=delta_m * -1).humanize()
+        else:
+            return Arrow.now().replace(days=delta_d * -1).humanize()
+class Category(Base):
+    __tablename__ = 'category'
+    id = Column(Integer, primary_key = True)
+    name = Column(String(128))
+    mods = relationship('Mod', order_by='desc(Mod.created)')
+
+class Report(Base):
+    __tablename__ = 'report'
+    id = Column(Integer, primary_key = True)
+    mod_id = Column(Integer, ForeignKey('mod.id'))
+    mod = relationship('Mod', backref=backref('report', order_by=id))
+    user_id = Column(Integer, ForeignKey('user.id'))
+    user = relationship('User', backref=backref('report', order_by=id))
+    reason = Column(String(512))
+    created = Column(DateTime)
+    def __init__(self):
+        self.created = datetime.now()

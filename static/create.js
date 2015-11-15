@@ -18,7 +18,7 @@
   };
 
   document.getElementById('submit').addEventListener('click', function() {
-    var a, modmm, form, kspVersion, license, name, progress, shortDescription, tags, version, xhr, _i, _len, _ref;
+    var a, nsfw, form, kspVersion, category,license, name, progress, shortDescription, tags, version, xhr, _i, _len, _ref;
     _ref = document.querySelectorAll('.has-error');
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       a = _ref[_i];
@@ -33,9 +33,10 @@
     if (license === 'Other') {
       license = get('mod-other-license');
     }
+    category = get('mod-category');
     version = get('mod-version');
     kspVersion = get('mod-ksp-version');
-    modmm = document.getElementById("modmm").checked;
+    nsfw = document.getElementById("nsfw").checked;
     if (name === '') {
       error('mod-name');
     }
@@ -80,7 +81,7 @@
       } else {
         alert = document.getElementById('error-alert');
         alert.classList.remove('hidden');
-        alert.textContent = result.message;
+        alert.textContent = result.reason;
         document.getElementById('submit').removeAttribute('disabled');
         document.querySelector('.upload-mod a').classList.remove('hidden');
         document.querySelector('.upload-mod p').classList.add('hidden');
@@ -94,7 +95,8 @@
     form.append('license', license);
     form.append('version', version);
     form.append('ksp-version', kspVersion);
-    form.append('modmm', modmm);
+    form.append('nsfw', nsfw);
+    form.append('category', category);
     form.append('zipball', zipFile);
     document.getElementById('submit').setAttribute('disabled', 'disabled');
     progress.querySelector('.progress-bar').style.width = '0%';

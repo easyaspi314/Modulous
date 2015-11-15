@@ -505,6 +505,7 @@ def reject_grant_mod(mod_id):
     db.delete(author)
     return { 'error': False }, 200
 
+
 @api.route('/api/mod/<mod_id>/revoke', methods=['POST'])
 @with_session
 @json_output
@@ -556,6 +557,26 @@ def set_default_version(mid, vid):
     mod.default_version_id = vid
     return { 'error': False }, 200
 
+@api.route("/report/<id>", methods=['POST'])
+@json_output
+def report(id):
+    reason = request.form.get('report-reason')
+    print(reason)
+    mod = Mod.query.filter(Mod.id == id).first()
+    if not current_user:
+        return { 'error': True, 'reason': 'You must log in to report' }, 403
+    if not mod:
+        return { 'error': True, 'reason': 'Mod does not exist' }, 400
+    if not reason:
+        return { 'error': True, 'reason': 'Reason is required' }, 400
+
+    report = Report()
+    report.user = current_user
+    report.mod = mod
+    report.reason = reason
+    db.add(report)
+    db.commit()
+    return redirect("/mod/" + id)
 @api.route('/api/pack/create', methods=['POST'])
 @json_output
 @with_session
@@ -575,6 +596,25 @@ def create_list():
     db.add(mod_list)
     db.commit()
     return { 'url': url_for("lists.view_list", list_id=mod_list.id, list_name=mod_list.name) }
+
+
+@api.route('/api/comment/<mod_id>', methods=['POST'])
+@with_session
+@json_output
+def comment_on_mod(mod_id):
+    if not current_user:
+        return { 'error': True, 'reason': 'You are not logged in.' }, 401
+    mod = Mod.query.filter(Mod.id == mod_id).first()
+    if not mod:
+        return { 'error': True, 'reason': 'Mod not found.' }, 404
+    content = request.form.get('content')
+    if not content:
+        return { 'error': True, 'reason': 'All fields are required.' }, 400
+    if len(content)>500:
+        return { 'error': True, 'reason': '500 chars max, sorry!' }, 400
+    comment = Comment(current_user, mod, content)
+    db.commit()
+    return { 'url': url_for("mods.mod", id=mod.id, mod_name=mod.name)  }
 @api.route('/api/mod/create', methods=['POST'])
 @json_output
 def create_mod():
@@ -588,7 +628,8 @@ def create_mod():
     version = request.form.get('version')
     ksp_version = request.form.get('ksp-version')
     license = request.form.get('license')
-    modmm = request.form.get('modmm');
+    category = request.form.get('category')
+    nsfw = request.form.get('nsfw')
     zipball = request.files.get('zipball')
     # Validate
     if not name \
@@ -596,25 +637,27 @@ def create_mod():
         or not version \
         or not ksp_version \
         or not license \
-        or not zipball:
+        or not zipball \
+        or not category:
         return { 'error': True, 'reason': 'All fields are required.' }, 400
     # Validation, continued
     if len(name) > 100 \
         or len(short_description) > 1000 \
         or len(license) > 128:
         return { 'error': True, 'reason': 'Fields exceed maximum permissible length.' }, 400
-    if modmm == None:
-        modmm = False
-    else:
-        modmm = (modmm.lower() == "true" or modmm.lower() == "yes" or modmm.lower() == "on")
     mod = Mod()
     mod.user = current_user
     mod.name = name
     mod.short_description = short_description
     mod.tags = tags
     mod.description = default_description
-    mod.modmm = modmm
     mod.license = license
+    mod.nsfw = nsfw
+    category = Category.query.filter(Category.name == category).first()
+    if not category:
+        return { 'error': True, 'reason': 'Category does not exist.' }, 400
+    else:
+        mod.category = category
     # Save zipball
     filename = secure_filename(name) + '-' + secure_filename(version) + '.zip'
     base_path = os.path.join(secure_filename(current_user.username) + '_' + str(current_user.id), secure_filename(name))

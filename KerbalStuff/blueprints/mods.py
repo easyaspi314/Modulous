@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, g, Response, redirect, session, abort, send_file, make_response, url_for
 from flask.ext.login import current_user
 from sqlalchemy import desc
-from KerbalStuff.objects import User, Mod, ModVersion, DownloadEvent, FollowEvent, ReferralEvent, Featured, Media, GameVersion
+from KerbalStuff.objects import User, Mod, ModVersion, DownloadEvent, FollowEvent, ReferralEvent, Featured, Media, GameVersion, Category, Report
 from KerbalStuff.email import send_update_notification, send_autoupdate_notification
 from KerbalStuff.database import db
 from KerbalStuff.common import *
@@ -25,6 +25,7 @@ def random_mod():
     mods = Mod.query.filter(Mod.published == True).all()
     mod = random.choice(mods)
     return redirect(url_for("mods.mod", id=mod.id, mod_name=mod.name))
+
 
 @mods.route("/mod/<int:id>/<path:mod_name>/update")
 def update(id, mod_name):
@@ -221,7 +222,7 @@ def edit_mod(id, mod_name):
 @loginrequired
 @with_session
 def create_mod():
-    return render_template("create.html", game_versions=GameVersion.query.order_by(desc(GameVersion.id)).all())
+    return render_template("create.html", **{ 'game_versions': GameVersion.query.order_by(desc(GameVersion.id)).all(), 'categories': Category.query.all()})
 
 @mods.route("/mod/<int:mod_id>/stats/downloads", defaults={'mod_name': None})
 @mods.route("/mod/<int:mod_id>/<path:mod_name>/stats/downloads")
@@ -417,7 +418,7 @@ def download(mod_id, mod_name, version):
             .first()
     if not os.path.isfile(os.path.join(_cfg('storage'), version.download_path)):
         abort(404)
-    
+
     if not 'Range' in request.headers:
         # Events are aggregated hourly
         if not download or ((datetime.now() - download.created).seconds / 60 / 60) >= 1:
@@ -432,7 +433,7 @@ def download(mod_id, mod_name, version):
         else:
             download.downloads += 1
         mod.download_count += 1
-    
+
     response = make_response(send_file(os.path.join(_cfg('storage'), version.download_path), as_attachment = True))
     if _cfg("use-x-accel") == 'true':
         response = make_response("")

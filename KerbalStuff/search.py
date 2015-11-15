@@ -1,4 +1,4 @@
-from KerbalStuff.objects import Mod, ModVersion, User
+from KerbalStuff.objects import Mod, ModVersion, User, Category
 from KerbalStuff.database import db
 from KerbalStuff.config import _cfg
 from sqlalchemy import or_, and_, desc
@@ -27,7 +27,7 @@ def weigh_result(result, terms):
         if result.short_description.lower().count(term) != 0:
             short_matches += 1
             score += short_matches * 50
- 
+
     score *= 100
 
     score += result.follower_count * 10
@@ -51,15 +51,17 @@ def weigh_result(result, terms):
 
     return score
 
-def search_mods(text, page, limit):
+def search_mods(text, page, limit, category=None):
     terms = text.split(' ')
-    query = db.query(Mod).join(Mod.user).join(Mod.versions)
+    query = db.query(Mod).join(Mod.user).join(Mod.versions).join(Mod.category)
     filters = list()
     filtering_by_game = False
+    filtering_by_category = False
+    category_filtering_by = ""
     game_filtering_by = ""
     for term in terms:
         if term.startswith("game:"):
-            filtering_by_game = True 
+            filtering_by_game = True
             game_filtering_by = term[5:]
         elif term.startswith("user:"):
             filters.append(User.username == term[5:])
@@ -80,6 +82,11 @@ def search_mods(text, page, limit):
             filters.append(Mod.name.ilike('%' + term + '%'))
             filters.append(User.username.ilike('%' + term + '%'))
             filters.append(Mod.short_description.ilike('%' + term + '%'))
+    if category != None and category != "":
+        if isinstance(category, str):
+            filters.append(Mod.category.has(Category.name == category))
+        else:
+            filters.append(Mod.category.has(Category.id == category))
     query = query.filter(or_(*filters))
     if filtering_by_game == True:
             query = query.filter(Mod.versions.any(ModVersion.ksp_version == game_filtering_by))

@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, g, Response, redirect, session, abort, send_file, url_for
 from flask.ext.login import LoginManager, current_user
 from flaskext.markdown import Markdown
+from flask_debugtoolbar import DebugToolbarExtension
+
 from jinja2 import FileSystemLoader, ChoiceLoader
 from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
@@ -62,6 +64,10 @@ app.register_blueprint(mods)
 app.register_blueprint(lists)
 app.register_blueprint(api)
 
+
+app.debug = True
+
+toolbar = DebugToolbarExtension(app)
 try:
     locale.setlocale(locale.LC_ALL, 'en_US')
 except:
