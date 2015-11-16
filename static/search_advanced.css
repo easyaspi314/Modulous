@@ -1,6 +1,21 @@
 body {
     padding-top: 50px;
 }
+.form-group label {
+    float: left;
+    text-align: left;
+    font-weight: normal;
+}
+
+.form-group select {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
 .dropdown.dropdown-lg .dropdown-menu {
     margin-top: -1px;
     padding: 6px 20px;

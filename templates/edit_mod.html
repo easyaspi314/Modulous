@@ -54,6 +54,14 @@ window.mod_id = {{ mod.id }};
         <input type="text" class="form-control input-block-level" name="short-description" value="{{ mod.short_description }}" placeholder="Short description..." />
         <p title="{{ mod.name }}">Tags(Sepearated by spaces and using _ instead of spaces)</p>
         <input type="text" class="form-control input-block-level" name="tags" value="{{ mod.tags }}" placeholder="Short tags..." />
+        <div class="form-group">
+            <h2>Category</h2>
+            <select id="category" name="category" class="form-control input-sm">
+                {% for category in categories %}
+                <option value="{{category.name}}" {% if mod.category == category %}selected{% endif %}>{{category.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
     </div>
 
     <div class="info-list">

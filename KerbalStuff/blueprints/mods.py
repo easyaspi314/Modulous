@@ -176,7 +176,7 @@ def edit_mod(id, mod_name):
     if not editable:
         abort(401)
     if request.method == 'GET':
-        return render_template("edit_mod.html", mod=mod, original=mod.user == current_user)
+        return render_template("edit_mod.html", mod=mod, original=mod.user == current_user, categories = Category.query.all())
     else:
         short_description = request.form.get('short-description')
         tags = request.form.get('tags')
@@ -188,8 +188,8 @@ def edit_mod(id, mod_name):
             modmm = False
         else:
             modmm = (modmm.lower() == "true" or modmm.lower() == "yes" or modmm.lower() == "on")
-        print(modmm)
         license = request.form.get('license')
+        category = request.form.get('category')
         donation_link = request.form.get('donation-link')
         external_link = request.form.get('external-link')
         source_link = request.form.get('source-link')
@@ -198,6 +198,10 @@ def edit_mod(id, mod_name):
         bgOffsetY = request.form.get('bg-offset-y')
         if not license or license == '':
             return render_template("edit_mod.html", mod=mod, error="All mods must have a license.")
+        if not category or category == '':
+            abort(401)
+        else:
+            category = Category.query.filter(Category.name == category).first()
         mod.short_description = short_description
         mod.license = license
         mod.donation_link = donation_link
@@ -206,6 +210,7 @@ def edit_mod(id, mod_name):
         mod.description = description
         mod.tags = tags
         mod.modmm = modmm
+        mod.category = category
         if other_authors == 'None' or other_authors == '':
             mod.other_authors = None
         else:

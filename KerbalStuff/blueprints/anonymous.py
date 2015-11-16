@@ -14,9 +14,9 @@ r = praw.Reddit(user_agent="Kerbal Stuff")
 @anonymous.route("/")
 def index():
     featured = Featured.query.order_by(desc(Featured.created)).limit(6)[:6]
-    top = search_mods("", 1, 3)[0]
-    new = Mod.query.filter(Mod.published).order_by(desc(Mod.created)).limit(3)[:3]
-    recent = Mod.query.filter(Mod.published).order_by(desc(Mod.updated)).limit(3)[:3]
+    top = search_mods("", 1, 3, "", "no")[0]
+    new = Mod.query.filter(Mod.published).filter(Mod.nsfw == False).order_by(desc(Mod.created)).limit(3)[:3]
+    recent = Mod.query.filter(Mod.published).filter(Mod.nsfw == False).order_by(desc(Mod.updated)).limit(3)[:3]
     user_count = User.query.count()
     mod_count = Mod.query.count()
     yours = list()
@@ -161,6 +161,9 @@ def mod_manager():
 def search():
     query = request.args.get('query')
     category = request.args.get('category')
+    nsfw = request.args.get('nsfw')
+    if(nsfw == None or nsfw == ""):
+        nsfw = "no"
     if not query:
         query = ''
     page = request.args.get('page')
@@ -168,7 +171,7 @@ def search():
         page = int(page)
     else:
         page = 1
-    mods, total_pages = search_mods(query, page, 30, category)
+    mods, total_pages = search_mods(query, page, 30, category, nsfw)
     return render_template("browse-list.html", mods=mods, page=page, total_pages=total_pages, search=True, query=query, category=category)
 @anonymous.route("/search_advanced")
 def search_advanced():

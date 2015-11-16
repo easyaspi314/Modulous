@@ -51,9 +51,12 @@ def weigh_result(result, terms):
 
     return score
 
-def search_mods(text, page, limit, category=None):
+def search_mods(text, page, limit, category=None, nsfw="only"):
+
     terms = text.split(' ')
     query = db.query(Mod).join(Mod.user).join(Mod.versions).join(Mod.category)
+    if nsfw == "" or nsfw == "no" or nsfw == None:
+        query = query.filter(Mod.nsfw == False)
     filters = list()
     filtering_by_game = False
     filtering_by_category = False
@@ -83,14 +86,21 @@ def search_mods(text, page, limit, category=None):
             filters.append(User.username.ilike('%' + term + '%'))
             filters.append(Mod.short_description.ilike('%' + term + '%'))
 
+    if nsfw == "yes":
+        filters.append(Mod.nsfw == True)
+        print("YESH")
     query = query.filter(or_(*filters))
-    if category != None and category != "":
+    if category != None and category != "" and category != "all":
         if isinstance(category, str):
                 query = query.filter(Mod.category.has(Category.name == category))
         else:
             query = query.filter(Mod.category.has(Category.id == category))
+
     if filtering_by_game == True:
             query = query.filter(Mod.versions.any(ModVersion.ksp_version == game_filtering_by))
+    print("NSFW: " + nsfw)
+    if nsfw == "only":
+        query = query.filter(Mod.nsfw == True)
     query = query.filter(Mod.published == True)
     query = query.order_by(desc(Mod.follower_count)) # We'll do a more sophisticated narrowing down of this in a moment
     total = math.ceil(query.count() / limit)
