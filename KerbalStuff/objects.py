@@ -342,7 +342,7 @@ class Comment(Base):
             offset /= 24
             delta_d = offset
         else:
-            raise ValueError("Must supply otherdate or offset (from now)")
+            return "just now"
         if delta_h > 1:
             return Arrow.now().replace(hours=delta_h * -1, minutes=delta_m * -1).humanize()
         if delta_m > 1:

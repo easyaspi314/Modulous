@@ -612,6 +612,7 @@ def comment_on_mod(mod_id):
     if len(content)>500:
         return { 'error': True, 'reason': '500 chars max, sorry!' }, 400
     comment = Comment(current_user, mod, content)
+    db.add(comment)
     db.commit()
     return redirect("/mod/" + mod_id)
 @api.route('/api/mod/create', methods=['POST'])
