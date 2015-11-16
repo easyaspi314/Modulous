@@ -15,8 +15,8 @@ r = praw.Reddit(user_agent="Kerbal Stuff")
 def index():
     featured = Featured.query.order_by(desc(Featured.created)).limit(6)[:6]
     top = search_mods("", 1, 3, "", "no")[0]
-    new = Mod.query.filter(Mod.published).filter(Mod.nsfw == False).order_by(desc(Mod.created)).limit(3)[:3]
-    recent = Mod.query.filter(Mod.published).filter(Mod.nsfw == False).order_by(desc(Mod.updated)).limit(3)[:3]
+    new = Mod.query.filter(Mod.published).filter(Mod.nsfw != True).order_by(desc(Mod.created)).limit(3)[:3]
+    recent = Mod.query.filter(Mod.published).filter(Mod.nsfw != True).order_by(desc(Mod.updated)).limit(3)[:3]
     user_count = User.query.count()
     mod_count = Mod.query.count()
     yours = list()
