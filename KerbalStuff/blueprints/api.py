@@ -652,6 +652,7 @@ def create_mod():
     mod.description = default_description
     mod.license = license
     mod.nsfw = nsfw
+    mod.modmm = False
     category = Category.query.filter(Category.name == category).first()
     if not category:
         return { 'error': True, 'reason': 'Category does not exist.' }, 400
