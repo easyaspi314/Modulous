@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='search_advanced.css') }}" />
+{% endblock %}
+{% block body %}
+<div class="container">
+    <h3>comment</h3>
+
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>User</th>
+      <th>Mod</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for comment in comments %}
+    <tr>
+      <td>{{comment.content}}</td>
+      <td><a href="/profile/{{comment.user.username}}">{{comment.user.username}}</a></td>
+      <td><a href="/mod/{{comment.mod.id}}">{{comment.mod.name}}</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

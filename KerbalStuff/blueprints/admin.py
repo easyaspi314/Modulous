@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, abort, redirect
 from flask.ext.login import current_user
 from sqlalchemy import desc
-from KerbalStuff.objects import User, Mod, GameVersion, Report
+from KerbalStuff.objects import User, Mod, GameVersion, Report, Comment
 from KerbalStuff.database import db
 from KerbalStuff.common import *
 from KerbalStuff.email import send_bulk_email
@@ -22,6 +22,12 @@ def backend():
 def reports():
     reports = Report.query.all()
     return render_template("reports_adm.html", reports=reports)
+	
+@admin.route("/admin/comments")
+@adminrequired
+def comment():
+    comments = Comment.query.all()
+    return render_template("comments_adm.html", comments=comments)
 @admin.route("/admin/impersonate/<username>")
 @adminrequired
 def impersonate(username):
