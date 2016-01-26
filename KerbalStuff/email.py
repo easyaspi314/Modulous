@@ -27,9 +27,9 @@ def send_confirmation(user, followMod=None):
     message['X-MC-Important'] = "true"
     message['X-MC-PreserveRecipients'] = "false"
     message['Subject'] = "Welcome to Modulous!"
-    message['From'] = "eirexe123@gmail.com"
+    message['From'] = "eirexe@modulous.net"
     message['To'] = user.email
-    smtp.sendmail("eirexe123@gmail.com", [ user.email ], message.as_string())
+    smtp.sendmail("eirexe@modulous.net", [ user.email ], message.as_string())
     smtp.quit()
 
 def send_reset(user):
@@ -44,9 +44,9 @@ def send_reset(user):
     message['X-MC-Important'] = "true"
     message['X-MC-PreserveRecipients'] = "false"
     message['Subject'] = "Reset your password on Modulous"
-    message['From'] = "eirexe123@gmail.com"
+    message['From'] = "eirexe@modulous.net"
     message['To'] = user.email
-    smtp.sendmail("eirexe123@gmail.com", [ user.email ], message.as_string())
+    smtp.sendmail("eirexe@modulous.net", [ user.email ], message.as_string())
     smtp.quit()
 
 def send_grant_notice(mod, user):
@@ -62,9 +62,9 @@ def send_grant_notice(mod, user):
     message['X-MC-Important'] = "true"
     message['X-MC-PreserveRecipients'] = "false"
     message['Subject'] = "You've been asked to co-author a mod on Modulous"
-    message['From'] = "eirexe123@gmail.com"
+    message['From'] = "eirexe@modulous.net"
     message['To'] = user.email
-    smtp.sendmail("eirexe123@gmail.com", [ user.email ], message.as_string())
+    smtp.sendmail("eirexe@modulous.net", [ user.email ], message.as_string())
     smtp.quit()
 
 def send_update_notification(mod, version, user):
@@ -99,9 +99,9 @@ def send_update_notification_sync(mod, version, user):
             })))
     message['X-MC-PreserveRecipients'] = "false"
     message['Subject'] = user + " has just updated " + mod.name + "!"
-    message['From'] = "eirexe123@gmail.com"
+    message['From'] = "eirexe@modulous.net"
     message['To'] = ";".join(targets)
-    smtp.sendmail("eirexe123@gmail.com", targets, message.as_string())
+    smtp.sendmail("eirexe@modulous.net", targets, message.as_string())
     smtp.quit()
 
 def send_autoupdate_notification(mod):
@@ -132,9 +132,9 @@ def send_autoupdate_notification(mod):
             })))
     message['X-MC-PreserveRecipients'] = "false"
     message['Subject'] = mod.name + " is compatible with KSP " + mod.versions[0].ksp_version + "!"
-    message['From'] = "eirexe123@gmail.com"
+    message['From'] = "eirexe@modulous.net"
     message['To'] = ";".join(targets)
-    smtp.sendmail("eirexe123@gmail.com", targets, message.as_string())
+    smtp.sendmail("eirexe@modulous.net", targets, message.as_string())
     smtp.quit()
 
 def send_bulk_email(users, subject, body):
