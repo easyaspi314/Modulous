@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, abort, request, redirect, session, Response
 from flask.ext.login import current_user
 from sqlalchemy import desc
-from KerbalStuff.objects import Featured, BlogPost, Mod, Category
+from KerbalStuff.objects import Featured, BlogPost, Mod, Category, GameVersion
 from KerbalStuff.search import search_mods
 from KerbalStuff.common import *
 from KerbalStuff.config import _cfg
@@ -162,6 +162,9 @@ def search():
     query = request.args.get('query')
     category = request.args.get('category')
     nsfw = request.args.get('nsfw')
+    game_a = request.args.get('game')
+    if(game_a == None):
+        game_a = "all"
     if(nsfw == None or nsfw == ""):
         nsfw = "no"
     if not query:
@@ -171,11 +174,12 @@ def search():
         page = int(page)
     else:
         page = 1
-    mods, total_pages = search_mods(query, page, 30, category, nsfw)
+    mods, total_pages = search_mods(query, page, 30, category, nsfw, game_a)
+    
     return render_template("browse-list.html", mods=mods, page=page, total_pages=total_pages, search=True, query=query, category=category)
 @anonymous.route("/search_advanced")
 def search_advanced():
-    return render_template("search_advanced.html", categories=Category.query)
+    return render_template("search_advanced.html", categories=Category.query, games = GameVersion.query)
 @anonymous.route("/c/")
 def c():
     s = r.get_subreddit("awwnime").get_hot(limit=212)

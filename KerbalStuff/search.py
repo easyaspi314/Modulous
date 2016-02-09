@@ -1,4 +1,4 @@
-from KerbalStuff.objects import Mod, ModVersion, User, Category
+from KerbalStuff.objects import Mod, ModVersion, User, Category, GameVersion
 from KerbalStuff.database import db
 from KerbalStuff.config import _cfg
 from sqlalchemy import or_, and_, desc
@@ -51,7 +51,7 @@ def weigh_result(result, terms):
 
     return score
 
-def search_mods(text, page, limit, category=None, nsfw="only"):
+def search_mods(text, page, limit, category=None, nsfw="only", game = "all"):
 
     terms = text.split(' ')
     query = db.query(Mod).join(Mod.user).join(Mod.versions).join(Mod.category)
@@ -95,6 +95,14 @@ def search_mods(text, page, limit, category=None, nsfw="only"):
                 query = query.filter(Mod.category.has(Category.name == category))
         else:
             query = query.filter(Mod.category.has(Category.id == category))
+
+    if(game != "all"):
+        #Modulous games are stored as strings inside KspVersions, ¿Why? I don't know.
+        game_version = GameVersion.query.filter(GameVersion.id == game).first()
+        if(game_version != None):
+            game_name = game_version.friendly_version
+            print(game_name)
+            query = query.filter(Mod.versions.any(ModVersion.ksp_version == game_name))
 
     if filtering_by_game == True:
             query = query.filter(Mod.versions.any(ModVersion.ksp_version == game_filtering_by))

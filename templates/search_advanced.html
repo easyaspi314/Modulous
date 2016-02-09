@@ -22,6 +22,7 @@
 
                         </div>
           </div>
+
           <div class="row">
             <div class="col-md-3 col-centered">
         <div class="form-group">
@@ -29,9 +30,26 @@
         <label> Category
           <select id="category" name="category" class="form-control input-sm" >
             <option value="all" selected>All</option>
-              {% for category in categories %}
+              {% for game in categories %}
 
-              <option value="{{category.name}}">{{category.name}}</option>
+              <option value="{{game.id}}">{{game.name}}</option>
+              {% endfor %}
+          </select>
+        </label>
+        </div>
+      </div>
+      </div>
+        </div>
+
+          <div class="row">
+            <div class="col-md-4 col-centered">
+        <div class="form-group">
+          <div class="center">
+        <label> Game
+          <select id="game" name="game" class="form-control input-sm" >
+            <option value="all" selected>All</option>
+              {% for game in games %}
+              <option value="{{game.id}}">Super Smash Bros. {{game.friendly_version}}</option>
               {% endfor %}
           </select>
         </label>
