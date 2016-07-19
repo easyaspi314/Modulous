@@ -1,3 +1,5 @@
+### This repository is outdated. The new repository can be found [here](https://github.com/ModulousSmash/ModulousNext).
+
 # KerbalStuff
 
 Website for Kerbal Space Program mods.
